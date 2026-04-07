@@ -1,6 +1,6 @@
 package PBL.model.evento;
 
-import PBL.model.Jogador;
+import PBL.model.model.Jogador;
 
 public abstract class EventoAleatorio{
     private String nome;
@@ -11,6 +11,18 @@ public abstract class EventoAleatorio{
         this.nome = nome;
         this.descricao = descricao;
         this.probabilidade = probabilidade;
+    }
+
+    public String getNome(){
+        return this.nome;
+    }
+
+    public String getDescricao(){
+        return this.descricao;
+    }
+
+    public double getProbabilidade(){
+        return this.probabilidade;
     }
 
     public double gerarAleatorio(){

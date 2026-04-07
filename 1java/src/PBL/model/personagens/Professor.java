@@ -1,7 +1,7 @@
 package PBL.model.personagens;
 
-import PBL.model.Jogador;
-import PBL.model.academico.Disciplina;
+import PBL.model.model.Jogador;
+import PBL.model.model.Disciplina;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +10,13 @@ public class Professor extends NPC {
     // de 0 a 2: nenhum apreço;  de 2 a 4: mínima;  4 a 8: moderada;  de 8 a 9: alto; 10: aluno favorito
     private int rigor; //de 1 a 10
     private List<Disciplina> materias;
+    private String bordao;
 
-    public Professor(String nome, int rigor){
+    public Professor(String nome, int rigor, String bordao){
         super(nome);
         this.materias = new ArrayList<>();
         this.rigor = rigor;
+        this.bordao = bordao;
     }
 
     public void addMateria(Disciplina d) {
@@ -24,10 +26,10 @@ public class Professor extends NPC {
     @Override
     public void interagir(Jogador jogador) {
         if (jogador.getTempo() >= 3) {
-            jogador.modificarTempo(-3);
+            jService.modificarTempo(jogador, -3);
 
-            jogador.consequencia("Conhecimento", 5);
-            jogador.consequencia("Energia", -(this.rigor * 2));
+            jService.consequencia(jogador, "Conhecimento", 5);
+            jService.consequencia(jogador, "Energia", -(this.rigor * 2));
 
             this.modificarRelacao(1);
         }

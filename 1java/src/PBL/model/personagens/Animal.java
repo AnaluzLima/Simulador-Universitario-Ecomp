@@ -1,6 +1,6 @@
 package PBL.model.personagens;
 
-import PBL.model.Jogador;
+import PBL.model.model.Jogador;
 
 public class Animal extends NPC {
     private String especie;
@@ -17,15 +17,15 @@ public class Animal extends NPC {
     @Override
     public void interagir(Jogador jogador) {
         if (jogador.getTempo() >= 1) {
-            jogador.modificarTempo(-1);
+            jService.modificarTempo(jogador, -1);
             if (Math.random() <= this.chanceAtaque) {
-                jogador.consequencia("Saúde", -30);
-                jogador.consequencia("Energia", -5);
+                jService.consequencia(jogador, "Saúde", -30);
+                jService.consequencia(jogador, "Energia", -5);
                 this.modificarRelacao(-2);
 
             } else {
-                jogador.consequencia("Motivação", 10);
-                jogador.consequencia("Energia", 5);
+                jService.consequencia(jogador, "Motivação", 10);
+                jService.consequencia(jogador, "Energia", 5);
                 this.modificarRelacao(1);
             }
         }

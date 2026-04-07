@@ -1,6 +1,6 @@
 package PBL.model.tasks;
 
-import PBL.model.Jogador;
+import PBL.model.model.Jogador;
 
 public class FalarComMaeli extends Atividade{
     public FalarComMaeli() {

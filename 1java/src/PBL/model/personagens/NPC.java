@@ -1,12 +1,16 @@
 package PBL.model.personagens;
 
-import PBL.model.Jogador;
-import PBL.model.locais.Local;
+import PBL.model.model.Jogador;
+import PBL.model.model.Local;
+import PBL.model.service.JogadorService;
 
 public abstract class NPC {
     private String nome;
     private Local localizacao;
     private int relacao;
+    protected JogadorService jService = new JogadorService();
+    private long ultimaInteracao;
+
 
     public NPC(String nome){
         this.nome = nome;
@@ -32,13 +36,22 @@ public abstract class NPC {
     public int getRelacao(){
         return this.relacao;
     }
-
+    public void setRelacao(int valor){
+        this.relacao = valor;
+    }
     public String getNome(){
         return this.nome;
     }
 
     public Local getLocalizacao(){
         return this.localizacao;
+    }
+
+    public long getUltimaInteracao(){
+        return ultimaInteracao;
+    }
+    public void setUltimaInteracao(long ultimaInteracao){
+        this.ultimaInteracao = ultimaInteracao;
     }
 
 }

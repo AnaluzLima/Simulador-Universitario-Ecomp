@@ -1,4 +1,4 @@
-package PBL.model.academico;
+package PBL.model.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ public class Disciplina {
     private int desempenho;
     private int cargaHoraria;
     private boolean provaFeita;
+    private boolean milagreAcademico;
 
     private List<Disciplina> preRequisitos;
     private List<Disciplina> coRequisitos;
@@ -28,6 +29,7 @@ public class Disciplina {
         this.preRequisitos = new ArrayList<>();
         this.coRequisitos = new ArrayList<>();
         this.provaFeita = false;
+        this.milagreAcademico = false;
 
     }
 
@@ -50,9 +52,15 @@ public class Disciplina {
     public boolean isProvaFeita() {
         return this.provaFeita;
     }
-
     public void setProvaFeita(boolean provaFeita) {
         this.provaFeita = provaFeita;
+    }
+
+    public boolean isMilagreAcademico(){
+        return this.milagreAcademico;
+    }
+    public void setMilagreAcademico(boolean milagre){
+        this.milagreAcademico = milagre;
     }
 
     public int getPreRequisitoTempo(){
@@ -63,36 +71,12 @@ public class Disciplina {
         return this.cargaHoraria;
     }
 
-    public void registrarNota(double pontuacaoMinigame){
-        double notaFinal = pontuacaoMinigame;
-
-        if(this.getDesempenho() > 95){
-            if (notaFinal < 10){
-                notaFinal += 3;
-                if(notaFinal > 10) {
-                    notaFinal = 10;
-                }
-            }
-        }
-        this.setNota(notaFinal);
-    }
-
     public void setNota(double nota){
         this.nota = nota;
     }
 
     public void setDesempenho(int desempenho){
         this.desempenho = desempenho;
-    }
-
-    public void modificarDesempenho(int desempenho){
-        this.desempenho += desempenho;
-
-        if (this.desempenho > 100) {
-            this.desempenho = 100;
-        } else if (this.desempenho < 0) {
-            this.desempenho = 0;
-        }
     }
 
     public void addPreRequisito(Disciplina d) {

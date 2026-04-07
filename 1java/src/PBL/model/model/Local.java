@@ -1,4 +1,4 @@
-package PBL.model.locais;
+package PBL.model.model;
 
 import PBL.model.tasks.Atividade;
 import java.util.ArrayList;
@@ -15,17 +15,9 @@ public class Local {
         this.atvLocais = new ArrayList<>();
     }
 
-    public void conectar(Local vizinho) {
-        if (!this.conexoes.contains(vizinho)) {
-            this.conexoes.add(vizinho);
-            vizinho.conectar(this);
-        }
-    }
-
     public void addAtividade(Atividade atividade) {
         this.atvLocais.add(atividade);
     }
-
     public String getNome() {
         return this.nome;
     }

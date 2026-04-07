@@ -1,6 +1,6 @@
 package PBL.model.evento;
 
-import PBL.model.Jogador;
+import PBL.model.model.Jogador;
 
 public class MaterialCaro extends EventoAleatorio{
     public MaterialCaro(){

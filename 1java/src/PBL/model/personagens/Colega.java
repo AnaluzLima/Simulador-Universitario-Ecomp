@@ -1,6 +1,6 @@
 package PBL.model.personagens;
 
-import PBL.model.Jogador;
+import PBL.model.model.Jogador;
 
 public class Colega extends NPC {
     //Nivel de Amizade;
@@ -13,8 +13,8 @@ public class Colega extends NPC {
     @Override
     public void interagir(Jogador jogador) {
         if (jogador.getTempo() >= 3) {
-            jogador.modificarTempo(-3);
-            jogador.consequencia("Motivação", 10);
+            jService.modificarTempo(jogador,-3);
+            jService.consequencia(jogador,"Motivação", 10);
 
             this.modificarRelacao(1);
         }

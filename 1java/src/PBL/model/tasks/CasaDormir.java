@@ -1,5 +1,5 @@
 package PBL.model.tasks;
-import PBL.model.Jogador;
+import PBL.model.model.Jogador;
 
 public class CasaDormir extends Atividade{
     public CasaDormir(){

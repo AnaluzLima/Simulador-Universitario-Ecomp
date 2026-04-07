@@ -1,4 +1,4 @@
-package PBL.model;
+package PBL.model.model;
 
 public class Atributo {
     private String nome;
@@ -13,17 +13,6 @@ public class Atributo {
         this.vMaximo = vMaximo;
     }
 
-    public void modificar(int qtd) {
-        this.valor += qtd;
-
-        if (this.valor > vMaximo) {
-            this.valor = vMaximo;
-        } else if (this.valor < vMinimo) {
-            this.valor = vMinimo;
-        }
-
-    }
-
     public String getNome() {
         return this.nome;
     }
@@ -32,5 +21,11 @@ public class Atributo {
     }
     public void setValor(int val){
         this.valor = val;
+    }
+    public int getvMaximo(){
+        return this.vMaximo;
+    }
+    public int getvMinimo(){
+        return this.vMinimo;
     }
 }

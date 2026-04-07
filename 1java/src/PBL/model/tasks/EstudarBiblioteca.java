@@ -1,7 +1,9 @@
 package PBL.model.tasks;
 
-import PBL.model.Jogador;
-import PBL.model.academico.Disciplina;
+import PBL.model.model.Jogador;
+import PBL.model.model.Disciplina;
+import PBL.model.evento.EventoAleatorio;
+import PBL.model.evento.MilagreAcademico;
 
 public class EstudarBiblioteca extends Atividade{
     private boolean levarColega;
@@ -18,6 +20,10 @@ public class EstudarBiblioteca extends Atividade{
     @Override
     public boolean executar(Jogador jogador) {
         if((jogador.getTempo() >= 5 && !levarColega) || (jogador.getTempo() >=10 && levarColega) ){
+
+            EventoAleatorio milagre = new MilagreAcademico(this.materia);
+            milagre.tentarAtivar();
+
             if(levarColega){
                 jogador.modificarTempo(-10);
                 jogador.consequencia("Energia", -20);
