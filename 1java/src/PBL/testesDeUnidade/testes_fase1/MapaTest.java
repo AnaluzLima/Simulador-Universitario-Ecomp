@@ -1,8 +1,8 @@
 package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.MatriculaException;
-import PBL.fase_1.model.*;
-import PBL.fase_1.model.tasks.AssistirAula;
+import PBL.model.model.*;
+import PBL.model.model.tasks.AssistirAula;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

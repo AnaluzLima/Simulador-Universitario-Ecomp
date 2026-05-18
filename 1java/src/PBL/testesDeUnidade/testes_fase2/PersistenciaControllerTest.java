@@ -2,7 +2,7 @@ package PBL.testesDeUnidade.testes_fase2;
 
 import PBL.exception.JogoException;
 import PBL.controller.PersistenciaController;
-import PBL.fase_1.model.Jogo;
+import PBL.model.model.Jogo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

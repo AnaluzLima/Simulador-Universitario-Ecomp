@@ -2,11 +2,11 @@ package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.DesmaioException;
 import PBL.exception.JogoException;
-import PBL.fase_1.model.Aparencia;
-import PBL.fase_1.model.Disciplina;
-import PBL.fase_1.model.Jogador;
-import PBL.fase_1.model.tasks.*;
-import PBL.fase_1.service.AtividadeService;
+import PBL.model.model.Aparencia;
+import PBL.model.model.Disciplina;
+import PBL.model.model.Jogador;
+import PBL.model.model.tasks.*;
+import PBL.model.service.AtividadeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

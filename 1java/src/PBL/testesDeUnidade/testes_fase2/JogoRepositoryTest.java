@@ -1,11 +1,11 @@
 package PBL.testesDeUnidade.testes_fase2;
 
 import PBL.exception.JogoException;
-import PBL.fase_1.model.Aparencia;
-import PBL.fase_1.model.Jogador;
-import PBL.fase_1.model.Jogo;
-import PBL.fase_1.model.Mapa;
-import PBL.fase_1.repository.JogoRepository;
+import PBL.model.model.Aparencia;
+import PBL.model.model.Jogador;
+import PBL.model.model.Jogo;
+import PBL.model.model.Mapa;
+import PBL.model.repository.JogoRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

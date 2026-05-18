@@ -1,10 +1,10 @@
 package PBL.testesDeUnidade.testes_fase1;
 
-import PBL.fase_1.model.Local;
-import PBL.fase_1.model.personagens.Colega;
-import PBL.fase_1.model.personagens.NPC;
-import PBL.fase_1.model.tasks.AssistirAula;
-import PBL.fase_1.model.tasks.CasaDormir;
+import PBL.model.model.Local;
+import PBL.model.model.personagens.Colega;
+import PBL.model.model.personagens.NPC;
+import PBL.model.model.tasks.AssistirAula;
+import PBL.model.model.tasks.CasaDormir;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

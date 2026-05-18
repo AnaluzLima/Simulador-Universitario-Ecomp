@@ -1,7 +1,7 @@
 package PBL.testesDeUnidade.testes_fase1;
 
-import PBL.fase_1.model.Aparencia;
-import PBL.fase_1.model.Jogador;
+import PBL.model.model.Aparencia;
+import PBL.model.model.Jogador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

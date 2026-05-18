@@ -2,10 +2,10 @@ package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.DinheiroException;
 import PBL.exception.TempoException;
-import PBL.fase_1.model.Aparencia;
-import PBL.fase_1.model.Disciplina;
-import PBL.fase_1.model.Jogador;
-import PBL.fase_1.model.evento.*;
+import PBL.model.model.Aparencia;
+import PBL.model.model.Disciplina;
+import PBL.model.model.Jogador;
+import PBL.model.model.evento.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

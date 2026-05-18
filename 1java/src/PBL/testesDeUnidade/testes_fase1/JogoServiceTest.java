@@ -1,16 +1,16 @@
 package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.JogoException;
-import PBL.fase_1.model.Aparencia;
-import PBL.fase_1.model.Disciplina;
-import PBL.fase_1.model.Jogador;
-import PBL.fase_1.model.Jogo;
-import PBL.fase_1.model.Mapa;
-import PBL.fase_1.model.minigames.MinigameSoftware;
-import PBL.fase_1.repository.HistoricoRepository;
-import PBL.fase_1.repository.JogoRepository;
-import PBL.fase_1.repository.MinigameRepository;
-import PBL.fase_1.service.JogoService;
+import PBL.model.model.Aparencia;
+import PBL.model.model.Disciplina;
+import PBL.model.model.Jogador;
+import PBL.model.model.Jogo;
+import PBL.model.model.Mapa;
+import PBL.model.model.minigames.MinigameSoftware;
+import PBL.model.repository.HistoricoRepository;
+import PBL.model.repository.JogoRepository;
+import PBL.model.repository.MinigameRepository;
+import PBL.model.service.JogoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

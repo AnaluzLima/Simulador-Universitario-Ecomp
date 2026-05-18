@@ -1,14 +1,12 @@
 package PBL.testesDeUnidade.testes_fase2;
 
-import PBL.fase_1.model.Disciplina;
-import PBL.fase_1.model.Historico;
-import PBL.fase_1.model.Mapa;
-import PBL.fase_1.repository.HistoricoRepository;
-import PBL.fase_1.repository.MinigameRepository;
+import PBL.model.model.Disciplina;
+import PBL.model.model.Historico;
+import PBL.model.model.Mapa;
+import PBL.model.repository.HistoricoRepository;
+import PBL.model.repository.MinigameRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,8 +22,8 @@ public class HistoricoRepositoryTest {
         minigameRepo = new MinigameRepository();
         mapa = new Mapa(true);
         //instancia os locais minimamente para o teste não quebrar
-        mapa.getCampus().add(new PBL.fase_1.model.Local("Salas de Aula do Módulo 5"));
-        mapa.getCampus().add(new PBL.fase_1.model.Local("LEDS"));
+        mapa.getCampus().add(new PBL.model.model.Local("Salas de Aula do Módulo 5"));
+        mapa.getCampus().add(new PBL.model.model.Local("LEDS"));
     }
 
     @Test

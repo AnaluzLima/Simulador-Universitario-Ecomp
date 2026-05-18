@@ -1,12 +1,12 @@
 package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.TempoException;
-import PBL.fase_1.model.Aparencia;
-import PBL.fase_1.model.Jogador;
-import PBL.fase_1.model.personagens.Colega;
-import PBL.fase_1.model.personagens.Professor;
-import PBL.fase_1.repository.NpcRepository;
-import PBL.fase_1.service.InteracaoService;
+import PBL.model.model.Aparencia;
+import PBL.model.model.Jogador;
+import PBL.model.model.personagens.Colega;
+import PBL.model.model.personagens.Professor;
+import PBL.model.repository.NpcRepository;
+import PBL.model.service.InteracaoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

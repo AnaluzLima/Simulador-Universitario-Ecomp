@@ -1,12 +1,12 @@
 package PBL.controller;
 
 import PBL.exception.JogoException;
-import PBL.fase_1.model.Aparencia;
-import PBL.fase_1.model.Jogador;
-import PBL.fase_1.model.Jogo;
-import PBL.fase_1.model.Mapa;
-import PBL.fase_1.repository.*;
-import PBL.fase_1.service.JogoService;
+import PBL.model.model.Aparencia;
+import PBL.model.model.Jogador;
+import PBL.model.model.Jogo;
+import PBL.model.model.Mapa;
+import PBL.model.repository.*;
+import PBL.model.service.JogoService;
 
 public class PersistenciaController {
     private final JogoService jogoService;

@@ -1,6 +1,6 @@
 package PBL.testesDeUnidade.testes_fase1;
 
-import PBL.fase_1.model.Disciplina;
+import PBL.model.model.Disciplina;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

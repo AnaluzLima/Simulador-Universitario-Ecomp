@@ -1,14 +1,12 @@
 package PBL.testesDeUnidade.testes_fase2;
 
-import PBL.fase_1.model.minigames.*;
-import PBL.fase_1.repository.MinigameRepository;
-import PBL.fase_1.service.MinigameService;
+import PBL.model.model.minigames.*;
+import PBL.model.repository.MinigameRepository;
+import PBL.model.service.MinigameService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 

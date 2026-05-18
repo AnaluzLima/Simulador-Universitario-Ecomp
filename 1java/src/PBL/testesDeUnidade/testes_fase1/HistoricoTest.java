@@ -1,8 +1,8 @@
 package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.MatriculaException;
-import PBL.fase_1.model.Disciplina;
-import PBL.fase_1.model.Historico;
+import PBL.model.model.Disciplina;
+import PBL.model.model.Historico;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

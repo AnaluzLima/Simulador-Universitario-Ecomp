@@ -1,7 +1,7 @@
 package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.JogoException;
-import PBL.fase_1.model.Aparencia;
+import PBL.model.model.Aparencia;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

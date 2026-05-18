@@ -1,9 +1,9 @@
 package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.TempoException;
-import PBL.fase_1.model.Aparencia;
-import PBL.fase_1.model.Jogador;
-import PBL.fase_1.model.personagens.*;
+import PBL.model.model.Aparencia;
+import PBL.model.model.Jogador;
+import PBL.model.model.personagens.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
