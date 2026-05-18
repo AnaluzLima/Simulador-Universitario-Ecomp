@@ -32,29 +32,25 @@ public class MapaRepository {
     }
 
     public void instanciarLocais() { //cria todos os locais
-        locais.put("Ponto 1", new Local("Ponto de Ônibus M5-M6"));
-        locais.put("Ponto 2", new Local("Ponto de Ônibus M3-M4"));
-        locais.put("Ponto 3", new Local("Ponto de Ônibus M1-M2"));
+        locais.put("PontoOnibus", new Local("Ponto de Ônibus"));
 
-        locais.put("Por do Sol", new Local("Praça do Pôr do Sol"));
+        locais.put("PorDoSol", new Local("Praça do Pôr do Sol"));
         locais.put("Borogodo", new Local("Praça do Borogodó"));
         locais.put("Quadra", new Local("Quadra"));
         locais.put("Portao", new Local("Portão Lateral"));
+        locais.put("EntradaBiblioteca", new Local("Entrada da Biblioteca"));
         locais.put("Biblioteca", new Local("Biblioteca"));
         locais.put("Bandejao", new Local("Bandejão"));
         locais.put("Colegiado", new Local("Colegiado"));
         locais.put("Feirinha", new Local("Feirinha"));
         locais.put("LEDS", new Local("LEDS"));
-        locais.put("Pavilhao", new Local("Pavilhão"));
 
-        locais.put("Cantina 1", new Local("Cantina do Módulo 1"));
-        locais.put("Cantina 3", new Local("Cantina do Módulo 3"));
-        locais.put("Cantina 5", new Local("Cantina do Módulo 5"));
-        locais.put("Cantina 7", new Local("Cantina do Módulo 7"));
+        locais.put("Cantina3", new Local("Cantina do Módulo 3"));
+
 
         for (int i = 1; i <= 7; i++) {
-            locais.put("Modulo " + i, new Local("Módulo " + i));
-            locais.put("PATS " + i, new Local("Salas de Aula do Módulo " + i));
+            locais.put("Modulo" + i, new Local("Módulo " + i));
+            locais.put("PAT" + i, new Local("Salas de Aula do Módulo " + i));
         }
     }
 
@@ -67,91 +63,88 @@ public class MapaRepository {
         }
 
         else { //se for em outro lugar, ele deve pegar o ônibus
-            Local ponto1 = locais.get("Ponto 1");
-            mapa.setSpawn(ponto1);
-            ponto1.addAtividade(new CasaDormir());
-            ponto1.addAtividade(new CasaEstudar());
-
-            locais.get("Ponto 2").addAtividade(new CasaDormir());
-            locais.get("Ponto 2").addAtividade(new CasaEstudar());
-            locais.get("Ponto 3").addAtividade(new CasaDormir());
-            locais.get("Ponto 3").addAtividade(new CasaEstudar());
+            Local ponto = locais.get("PontoOnibus");
+            mapa.setSpawn(ponto);
+            ponto.addAtividade(new CasaDormir());
+            ponto.addAtividade(new CasaEstudar());
         }
     }
 
     private void conectarLocais() { //conecta os locais interligados
-        locais.get("Ponto 1").conectar(locais.get("Modulo 7"));
-        locais.get("Ponto 1").conectar(locais.get("Modulo 6"));
-        locais.get("Ponto 1").conectar(locais.get("Modulo 5"));
-        locais.get("Ponto 1").conectar(locais.get("Biblioteca"));
+        locais.get("PontoOnibus").conectar(locais.get("Modulo7"));
+        locais.get("PontoOnibus").conectar(locais.get("Modulo6"));
+        locais.get("PontoOnibus").conectar(locais.get("Modulo5"));
+        locais.get("PontoOnibus").conectar(locais.get("Biblioteca"));
 
-        locais.get("Ponto 2").conectar(locais.get("Modulo 4"));
-        locais.get("Ponto 2").conectar(locais.get("Modulo 3"));
-        locais.get("Ponto 2").conectar(locais.get("Bandejao"));
+        locais.get("PontoOnibus").conectar(locais.get("Modulo4"));
+        locais.get("PontoOnibus").conectar(locais.get("Cantina3"));
 
-        locais.get("Ponto 3").conectar(locais.get("Modulo 2"));
-        locais.get("Ponto 3").conectar(locais.get("Modulo 1"));
-        locais.get("Ponto 3").conectar(locais.get("Feirinha"));
+        locais.get("PontoOnibus").conectar(locais.get("Modulo2"));
+        locais.get("PontoOnibus").conectar(locais.get("Modulo1"));
+        locais.get("PontoOnibus").conectar(locais.get("Feirinha"));
 
-        locais.get("Modulo 1").conectar(locais.get("Modulo 2"));
-        locais.get("Modulo 1").conectar(locais.get("Cantina 1"));
-        locais.get("Modulo 1").conectar(locais.get("PATS 1"));
+        locais.get("Modulo1").conectar(locais.get("Modulo2"));
+        locais.get("Modulo1").conectar(locais.get("PAT1"));
 
-        locais.get("Modulo 2").conectar(locais.get("Modulo 3"));
-        locais.get("Modulo 2").conectar(locais.get("Feirinha"));
-        locais.get("Modulo 2").conectar(locais.get("PATS 2"));
+        locais.get("Modulo2").conectar(locais.get("Cantina3"));
+        locais.get("Modulo2").conectar(locais.get("Feirinha"));
+        locais.get("Modulo2").conectar(locais.get("PAT2"));
+        locais.get("PAT2").conectar(locais.get("Quadra"));
 
-        locais.get("Modulo 3").conectar(locais.get("Modulo 4"));
-        locais.get("Modulo 3").conectar(locais.get("Cantina 3"));
-        locais.get("Modulo 3").conectar(locais.get("Borogodo"));
-        locais.get("Modulo 3").conectar(locais.get("LEDS"));
-        locais.get("Modulo 3").conectar(locais.get("PATS 3"));
 
-        locais.get("Modulo 4").conectar(locais.get("Modulo 5"));
-        locais.get("Modulo 4").conectar(locais.get("Biblioteca"));
-        locais.get("Modulo 4").conectar(locais.get("PATS 4"));
 
-        locais.get("Modulo 5").conectar(locais.get("Modulo 6"));
-        locais.get("Modulo 5").conectar(locais.get("Cantina 5"));
-        locais.get("Modulo 5").conectar(locais.get("Biblioteca"));
-        locais.get("Modulo 5").conectar(locais.get("Pavilhao"));
-        locais.get("Modulo 5").conectar(locais.get("PATS 5"));
+        locais.get("Cantina3").conectar(locais.get("Modulo4"));
+        locais.get("Cantina3").conectar(locais.get("Modulo3"));
 
-        locais.get("Modulo 6").conectar(locais.get("Modulo 7"));
-        locais.get("Modulo 6").conectar(locais.get("PATS 6"));
+        locais.get("Modulo3").conectar(locais.get("Borogodo"));
+        locais.get("Modulo3").conectar(locais.get("LEDS"));
+        locais.get("Modulo3").conectar(locais.get("PAT3"));
+        locais.get("Modulo3").conectar(locais.get("Quadra"));
 
-        locais.get("Modulo 7").conectar(locais.get("Cantina 7"));
-        locais.get("Modulo 7").conectar(locais.get("Por do Sol"));
-        locais.get("Modulo 7").conectar(locais.get("PATS 7"));
+
+        locais.get("Modulo4").conectar(locais.get("Modulo5"));
+        locais.get("Modulo4").conectar(locais.get("Biblioteca"));
+        locais.get("Modulo4").conectar(locais.get("PAT4"));
+
+        locais.get("Modulo5").conectar(locais.get("Modulo6"));
+        locais.get("Modulo5").conectar(locais.get("Biblioteca"));
+        locais.get("Modulo5").conectar(locais.get("PAT5"));
+
+        locais.get("Modulo6").conectar(locais.get("Modulo7"));
+        locais.get("Modulo6").conectar(locais.get("PAT6"));
+
+        locais.get("Modulo7").conectar(locais.get("PorDoSol"));
+        locais.get("Modulo7").conectar(locais.get("PAT7"));
 
         locais.get("Feirinha").conectar(locais.get("Bandejao"));
-        locais.get("Colegiado").conectar(locais.get("Quadra"));
-        locais.get("Colegiado").conectar(locais.get("Pavilhao"));
-        locais.get("Colegiado").conectar(locais.get("PATS 3"));
+        locais.get("Colegiado").conectar(locais.get("PAT3"));
 
         locais.get("Portao").conectar(locais.get("Bandejao"));
         locais.get("Portao").conectar(locais.get("Biblioteca"));
-        locais.get("Portao").conectar(locais.get("Modulo 3"));
+        locais.get("Portao").conectar(locais.get("Modulo3"));
     }
 
     private void adicionarAtividades() { //adiciona as atividades fixas nos locais
         locais.get("Bandejao").addAtividade(new Bandejar());
-        locais.get("Cantina 1").addAtividade(new Cantinar());
-        locais.get("Cantina 3").addAtividade(new Cantinar());
-        locais.get("Cantina 5").addAtividade(new Cantinar());
-        locais.get("Cantina 7").addAtividade(new Cantinar());
+        locais.get("Modulo1").addAtividade(new Cantinar());
+        locais.get("Cantina3").addAtividade(new Cantinar());
+        locais.get("Modulo5").addAtividade(new Cantinar());
+        locais.get("Modulo7").addAtividade(new Cantinar());
 
         locais.get("Portao").addAtividade(new DarRole());
         locais.get("Biblioteca").addAtividade(new EstudarBiblioteca());
 
         locais.get("Colegiado").addAtividade(new FalarComMaeli());
         locais.get("Borogodo").addAtividade(new Relaxar());
-        locais.get("Por do Sol").addAtividade(new Relaxar());
+        locais.get("PorDoSol").addAtividade(new Relaxar());
 
         //sofrerá modificações no futuro
-        locais.get("Feirinha").addAtividade(new ComprarFeirinha("Pulseira", 10));
-        locais.get("Feirinha").addAtividade(new ComprarFeirinha("Planta", 30));
-        locais.get("Feirinha").addAtividade(new ComprarFeirinha("Conjunto", 70));
+        locais.get("Feirinha").addAtividade(new ComprarFeirinha("blushed", 10));
+        locais.get("Feirinha").addAtividade(new ComprarFeirinha("flor", 30));
+        locais.get("Feirinha").addAtividade(new ComprarFeirinha("folhas", 35));
+        locais.get("Feirinha").addAtividade(new ComprarFeirinha("luva", 20));
+        locais.get("Feirinha").addAtividade(new ComprarFeirinha("oculos", 70));
+        locais.get("Feirinha").addAtividade(new ComprarFeirinha("camisaEcomp", 100));
 
         locais.get("Quadra").addAtividade(new PraticarEsporte());
     }
@@ -162,8 +155,8 @@ public class MapaRepository {
 
         if (professores.size() >= 3) {
             locais.get("Colegiado").addNPC(professores.get(0)); //Ana Lúcia
-            locais.get("PATS 3").addNPC(professores.get(1)); //Wild
-            locais.get("PAT 5").addNPC(professores.get(2)); //Michele
+            locais.get("LEDS").addNPC(professores.get(1)); //Wild
+            locais.get("PAT5").addNPC(professores.get(2)); //Michele
         }
 
         List<Colega> colegas = npcR.carregarColegas();
@@ -171,11 +164,11 @@ public class MapaRepository {
 
 
         List<Animal> animais = npcR.carregarAnimais();
-        locais.get("Modulo 5").addNPC(animais.get(1)); //Fábio Junior
-        locais.get("Modulo 3").addNPC(animais.get(0)); //Scooby
-        locais.get("Modulo 2").addNPC(animais.get(2)); //Nariz
-        locais.get("Modulo 7").addNPC(animais.get(5)); //Raposinha
+        locais.get("Modulo5").addNPC(animais.get(1)); //Fábio Junior
+        locais.get("Modulo3").addNPC(animais.get(0)); //Scooby
+        locais.get("Modulo2").addNPC(animais.get(2)); //Nariz
+        locais.get("Modulo7").addNPC(animais.get(5)); //Raposinha
         locais.get("Portao").addNPC(animais.get(3)); //Pitufina
-        locais.get("Modulo 3").addNPC(animais.get(4)); //Mico
+        locais.get("Modulo3").addNPC(animais.get(4)); //Mico
     }
 }

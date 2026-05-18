@@ -1,4 +1,4 @@
-package PBL.testesDeUnidade;
+package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.DesmaioException;
 import PBL.exception.JogoException;
@@ -37,7 +37,7 @@ public class AtividadeServiceTest {
 
         //o Service deve ter injetado o nome da atividade no celular
         assertEquals(1, jogador.getCelular().getHistoricoAtividades().size());
-        assertEquals("Relaxar na Praça", jogador.getCelular().getHistoricoAtividades().get(0));
+        assertEquals("Relaxar na Praça", jogador.getCelular().getHistoricoAtividades().get(0).getTexto());
     }
 
     @Test

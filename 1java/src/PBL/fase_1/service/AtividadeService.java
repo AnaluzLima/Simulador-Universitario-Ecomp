@@ -14,7 +14,7 @@ public class AtividadeService {
         //executa a ação da atividade passando o service de eventos para lidar com surpresas
         atividade.executar(jogador);
         jogador.atualizarDesempenho();
-        jogador.getCelular().registrarAtividade(atividade.getNome());
+        jogador.getCelular().adicionarRegistro(atividade.getNome());
 
         //se o jogador for levado ao limite, ele sofre punições e o jogo será momentaneamente é interrompido.
         if (jogador.getEnergia().getValor() == 0) {

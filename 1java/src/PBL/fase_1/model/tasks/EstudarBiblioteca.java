@@ -45,6 +45,7 @@ public class EstudarBiblioteca extends Atividade {
             jogador.getEnergia().modificar(-20); //gasta 20 de energia
             jogador.getConhecimento().modificar(20); //ganha 20 de conhecimento
             this.materia.modificarDesempenho(25); //ganha 25 de desempenho na materia
+            jogador.getCelular().modificarAmizade(acompanhante.getNome(), 2); //aumenta a relação entre eles
         }
         else{ //se não
             jogador.modificarTempo(-5); //gasta 5 pontos de tempo

@@ -4,19 +4,21 @@ import PBL.fase_1.model.personagens.NPC;
 import PBL.fase_1.model.tasks.AssistirAula;
 import PBL.fase_1.model.tasks.Atividade;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**Essa classe tem como objetivo criar um local que o jogador poderá visitar. Ele também armazena as conexoes com outros locais*/
 
 public class Local {
     private final String nome;
-    private List<Local> conexoes; //lista de conexoes com outros lugares
-    private List<Atividade> atvLocais; //atividades que podem ser feitas no local
-    private List<NPC> npcsLocal; //npcs que estão no local
+    private transient Set<Local> conexoes; //lista de conexoes com outros lugares
+    private transient List<Atividade> atvLocais; //atividades que podem ser feitas no local
+    private transient List<NPC> npcsLocal; //npcs que estão no local
 
     public Local(String nome){
         this.nome = nome;
-        this.conexoes = new ArrayList<>();
+        this.conexoes = new HashSet<>();
         this.atvLocais = new ArrayList<>();
         this.npcsLocal = new ArrayList<>();
     }

@@ -4,25 +4,27 @@ package PBL.fase_1.model;
 import PBL.fase_1.model.tasks.AssistirAula;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**Essa classe tem como objetivo ser o conjunto de locais (o mapa)
  * É ela que armazena onde o jogador vai 'nascer', saber quais são os lugares que faezem parte do mapa
  * e distribuir as aulas nos locais certos*/
 
 public class Mapa {
-    private List<Local> campus;
+    private Set<Local> campus;
     private Local spawn;
 
     public Mapa(boolean spawnF6) {
-        this.campus = new ArrayList<>();
+        this.campus = new HashSet<>();
     }
 
-    public List<Local> getCampus() {
+    public Set<Local> getCampus() {
         return this.campus;
     }
 
-    public void setCampus(List<Local> campus) {
+    public void setCampus(Set<Local> campus) {
         this.campus = campus;
     }
 

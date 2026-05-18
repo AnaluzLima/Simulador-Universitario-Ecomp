@@ -5,7 +5,7 @@ package PBL.fase_1.model;
 public class Jogo {
     private int slot;
     private Jogador jogador;
-    private Mapa mapa;
+    private transient Mapa mapa;
     private boolean finalizado;
 
     public Jogo(int slot, Jogador jogador, Mapa mapa) {

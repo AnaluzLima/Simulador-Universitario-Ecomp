@@ -2,8 +2,7 @@ package PBL.fase_1.model;
 
 import PBL.exception.MatriculaException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**Essa classe tem como objetivo ser o que vai definir o semestre do jogador*/
 
@@ -11,9 +10,9 @@ public class Historico {
     private int cargaHorariaTotal; //total de horas concluidas pelo jogador
     private static final int CARGA_HORARIA_FINAL = 2970; //carga horaria fixa maxima do curso
     private int cargaHorariaSemestre; //carga horaria do semestre que o jogador está cursando
-    private List<Disciplina> cursando;
-    private List<Disciplina> aprovadas;
-    private List<Disciplina> pendentes;
+    private Set<Disciplina> cursando;
+    private Set<Disciplina> aprovadas;
+    private Set<Disciplina> pendentes;
     private boolean semestreGreve;
 
     //para poder calcular o score
@@ -22,9 +21,9 @@ public class Historico {
     private double score;
 
     public Historico(){
-        this.pendentes = new ArrayList<>();
-        this.cursando = new ArrayList<>();
-        this.aprovadas = new ArrayList<>();
+        this.pendentes = new HashSet<>();
+        this.cursando = new HashSet<>();
+        this.aprovadas = new HashSet<>();
         this.cargaHorariaTotal = 0;
         this.cargaHorariaSemestre = 0;
         this.semestreGreve = false;
@@ -46,13 +45,13 @@ public class Historico {
         this.semestreGreve = estado;
     }
 
-    public List<Disciplina> getCursando(){
+    public Set<Disciplina> getCursando(){
         return this.cursando;
     }
-    public List<Disciplina> getAprovadas(){
+    public Set<Disciplina> getAprovadas(){
         return this.aprovadas;
     }
-    public List<Disciplina> getPendentes(){
+    public Set<Disciplina> getPendentes(){
         return this.pendentes;
     }
 
@@ -180,5 +179,6 @@ public class Historico {
     public void adicionarDisciplinasCursando(List<Disciplina> disciplinas) {
         this.cursando.addAll(disciplinas);
     }
+
 }
 

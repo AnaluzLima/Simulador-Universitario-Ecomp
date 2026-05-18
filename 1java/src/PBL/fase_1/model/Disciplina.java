@@ -3,15 +3,17 @@ package PBL.fase_1.model;
 import PBL.fase_1.model.minigames.Minigame;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**Essa classe tem como objetivo criar uma disciplina que o jogador terá que cursar.
  * ela terá seus requisitos, sua nota, carga horaria, local que será ministrada, etc.*/
 
 public class Disciplina {
     private final String nome;
-    private final Minigame minigame; //tipo de minigame: "Texto", "Matemática", "Hardware" ou "Sotfware"
-    private final Local sala;
+    private transient Minigame minigame; //tipo de minigame: "Texto", "Matemática", "Hardware" ou "Sotfware"
+    private transient Local sala;
     private double nota;
     private int desempenho;
     private final int cargaHoraria;
@@ -19,8 +21,8 @@ public class Disciplina {
     private boolean milagreAcademico;
     private boolean provaSurpresaAtiva;
 
-    private List<Disciplina> preRequisitos;
-    private List<Disciplina> coRequisitos;
+    private transient Set<Disciplina> preRequisitos;
+    private transient Set<Disciplina> coRequisitos;
 
     private final int preRequisitoTempo;
 
@@ -34,8 +36,8 @@ public class Disciplina {
         this.preRequisitoTempo = preRequisitoTempo;
         this.sala = sala;
 
-        this.preRequisitos = new ArrayList<>();
-        this.coRequisitos = new ArrayList<>();
+        this.preRequisitos = new HashSet<>();
+        this.coRequisitos = new HashSet<>();
         this.provaFeita = false;
         this.milagreAcademico = false;
         this.provaSurpresaAtiva = false;
@@ -74,9 +76,15 @@ public class Disciplina {
     public Minigame getMinigame(){
         return this.minigame;
     }
+    public void setMinigame(Minigame m){
+        this.minigame = m;
+    }
 
     public Local getSala(){
         return this.sala;
+    }
+    public void setSala(Local s){
+        this.sala = s;
     }
 
     public double getNota(){
@@ -123,11 +131,17 @@ public class Disciplina {
         this.coRequisitos.add(d);
     }
 
-    public List<Disciplina> getPreRequisitos() {
-        return new ArrayList<>(preRequisitos);
+    public Set<Disciplina> getPreRequisitos() {
+        return new HashSet<>(preRequisitos);
     }
-    public List<Disciplina> getCoRequisitos() {
-        return new ArrayList<>(coRequisitos);
+    public Set<Disciplina> getCoRequisitos() {
+        return new HashSet<>(coRequisitos);
+    }
+    public void setPreRequisitos(Set<Disciplina> pre) {
+        this.preRequisitos = pre;
+    }
+    public void setCoRequisitos(Set<Disciplina> co) {
+        this.coRequisitos = co;
     }
 
     public boolean isProvaSurpresaAtiva() {

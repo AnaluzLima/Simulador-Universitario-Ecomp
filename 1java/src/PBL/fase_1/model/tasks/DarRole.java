@@ -37,7 +37,7 @@ public class DarRole extends Atividade{
         if(acompanhante != null){ //se o jogador ta levando um colega
             jogador.modificarTempo(-10); //gasta 10 pontos de tempo
             jogador.getMotivacao().modificar(40); //recebe 40 de motivação
-            acompanhante.modificarRelacao(2); //aumenta a relação com o colega em 2
+            jogador.getCelular().modificarAmizade(acompanhante.getNome(), 2); //aumenta a relação com o colega em 2
         }
         else { //se não
             jogador.modificarTempo(-5); //gasta 5 pontos de tempo

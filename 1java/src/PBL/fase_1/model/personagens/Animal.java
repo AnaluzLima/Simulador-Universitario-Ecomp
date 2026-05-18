@@ -20,13 +20,13 @@ public class Animal extends NPC {
             //Morder
             jogador.getSaude().modificar(-30); //perde 30 de saude
             jogador.getEnergia().modificar(-5); //perde 5 de energia
-            this.modificarRelacao(-2); //diminui sua relação com ele em -2
+            jogador.getCelular().modificarAmizade(this.getNome(), -2); //diminui sua relação com ele em -2
         }
         else {
             //Carinho
             jogador.getMotivacao().modificar(10); //recebe 10 de motivacao
             jogador.getEnergia().modificar(5); //5 de energia
-            this.modificarRelacao(1); //aumenta sua relação com ele em 1
+            jogador.getCelular().modificarAmizade(this.getNome(), 1); //aumenta sua relação com ele em 1
         }
     }
 }

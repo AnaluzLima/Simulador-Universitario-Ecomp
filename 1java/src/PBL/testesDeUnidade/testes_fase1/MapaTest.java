@@ -1,4 +1,4 @@
-package PBL.testesDeUnidade;
+package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.MatriculaException;
 import PBL.fase_1.model.*;
@@ -7,24 +7,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MapaTest {
 
     private Mapa mapa;
-    private Local pavilhao;
+    private Local pats5;
     private Local leds;
     private Jogador jogador;
 
     @BeforeEach
     public void inicializa() {
         mapa = new Mapa(true);
-        pavilhao = new Local("Pavilhão");
+        pats5 = new Local("Salas de Aula do Módulo 5");
         leds = new Local("LEDS");
 
-        mapa.setCampus(Arrays.asList(pavilhao, leds));
+        mapa.setCampus(new HashSet<>(Arrays.asList(pats5, leds)));
 
         Aparencia skin = new Aparencia("Padrão");
         jogador = new Jogador("Luz", skin);
@@ -39,7 +39,7 @@ public class MapaTest {
     @Test
     public void test_Distribuir_Aulas_Na_Sala_Certa() throws MatriculaException {
         //disciplina em que a aula é no Pavilhão
-        Disciplina algoritmos = new Disciplina("Algoritmos I", null, 60, 0, pavilhao);
+        Disciplina algoritmos = new Disciplina("Algoritmos I", null, 60, 0, pats5);
 
         //matricula o jogador na disciplina
         jogador.getHistorico().adicionarPendente(algoritmos);
@@ -49,11 +49,11 @@ public class MapaTest {
         mapa.distribuirAulas(jogador);
 
         //Pavilhão ganhou uma atividade de aula. O LEDS continuou vazio.
-        assertEquals(1, pavilhao.getAtvLocais().size());
+        assertEquals(1, pats5.getAtvLocais().size());
         assertEquals(0, leds.getAtvLocais().size());
 
         //confere se a atividade criada foi preenchida com a matéria certa
-        AssistirAula atividadeAula = (AssistirAula) pavilhao.getAtvLocais().get(0);
+        AssistirAula atividadeAula = (AssistirAula) pats5.getAtvLocais().get(0);
         assertTrue(atividadeAula.getNome().contains("Algoritmos I"));
     }
 

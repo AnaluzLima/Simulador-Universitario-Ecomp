@@ -9,11 +9,9 @@ import PBL.fase_1.model.Local;
 public abstract class NPC {
     private String nome;
     private Local localizacao;
-    private int relacao;
 
     public NPC(String nome){
         this.nome = nome;
-        this.relacao = 0;
     }
 
     public abstract void interagir(Jogador jogador) throws TempoException;
@@ -25,27 +23,20 @@ public abstract class NPC {
     //Para o animal: de 0 a 2: estranho;  de 2 a 4: conhecido;  4 a 8: adora; de 8 a 10: humano favorito
 
     //A relação pe medida de 1 a 10
-    public void modificarRelacao(int modificar){
-        this.relacao += modificar;
-        if (this.relacao < 0){
-            this.relacao = 0;
-        }
-        else if(this.relacao > 10){
-            this.relacao = 10;
-        }
-    }
 
     public String pedirContato(Jogador jogador) throws TempoException{
         jogador.modificarTempo(-1);
+        int relacao = jogador.getCelular().getNivelAmizade(this.nome);
 
         //um jogador pode pedir o contato de um NPC para salvar no celular
         //para isso, ele precisa ao menos conhecer um pouco o personagem, por isso é exigido uma relação nivel 3
-        if (this.relacao >= 3) {
+        if (relacao >= 3) {
             boolean adicionou = jogador.getCelular().adicionarContato(this);
 
             if (adicionou) {
                 return this.nome + ": Claro!";
-            } else {
+            }
+            else {
                 return this.nome + ": Ué, você já não tem meu número?!";
             }
         } else {
@@ -54,12 +45,6 @@ public abstract class NPC {
         }
     }
 
-    public int getRelacao(){
-        return this.relacao;
-    }
-    public void setRelacao(int valor){
-        this.relacao = valor;
-    }
     public String getNome(){
         return this.nome;
     }

@@ -1,4 +1,4 @@
-package PBL.testesDeUnidade;
+package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.JogoException;
 import PBL.fase_1.model.Aparencia;
@@ -7,7 +7,9 @@ import PBL.fase_1.model.Jogador;
 import PBL.fase_1.model.Jogo;
 import PBL.fase_1.model.Mapa;
 import PBL.fase_1.model.minigames.MinigameSoftware;
+import PBL.fase_1.repository.HistoricoRepository;
 import PBL.fase_1.repository.JogoRepository;
+import PBL.fase_1.repository.MinigameRepository;
 import PBL.fase_1.service.JogoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,14 +27,19 @@ public class JogoServiceTest {
     private Jogador jogador;
     private Jogo jogo;
     private Disciplina programacao;
+    private HistoricoRepository historicoRepository;
+    private MinigameRepository minigameRepository;
+    private Mapa mapa;
 
     @BeforeEach
-    public void inicializa() {
+    public void inicializa() throws JogoException {
         jogoRepository = new JogoRepository();
-        jogoService = new JogoService(jogoRepository);
+        historicoRepository = new HistoricoRepository();
+        minigameRepository = new MinigameRepository();
+        jogoService = new JogoService(jogoRepository, historicoRepository, minigameRepository);
 
         jogador = new Jogador("Luz", new Aparencia("Padrão"));
-        Mapa mapa = new Mapa(true);
+        mapa = new Mapa(true);
         jogo = new Jogo(1, jogador, mapa);
 
         programacao = new Disciplina("Programação", new MinigameSoftware(), 60, 0, null);
@@ -55,7 +62,7 @@ public class JogoServiceTest {
     }
 
     @Test
-    public void test_Encerrar_Semestre_Nao_Formado_Avanca_Semestre_E_Salva() {
+    public void test_Encerrar_Semestre_Nao_Formado_Avanca_Semestre_E_Salva() throws JogoException {
         //jogador tem uma matéria pendente, então não está formado. Semestre inicial é 1.
         jogador.getHistorico().adicionarPendente(programacao);
 
@@ -73,7 +80,7 @@ public class JogoServiceTest {
     }
 
     @Test
-    public void test_Encerrar_Semestre_Formado_Finaliza_Jogo() {
+    public void test_Encerrar_Semestre_Formado_Finaliza_Jogo() throws JogoException {
         //o jogador não tem matérias cursando nem pendentes.
 
         jogoService.encerrarSemestre(jogo);
@@ -86,19 +93,19 @@ public class JogoServiceTest {
     @Test
     public void test_Carregar_Jogo_Inexistente() {
         //tenta carregar o Slot 10, que está vazio
-        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo(10);});
+        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo(10, mapa);});
 
         assertEquals("Não há nenhum jogo neste slot.", excecao.getMessage());
     }
 
     @Test
-    public void test_Carregar_Jogo_Finalizado() {
+    public void test_Carregar_Jogo_Finalizado() throws JogoException {
         //salva no repositório um jogo que já foi zerado
         jogo.setFinalizado(true);
         jogoService.salvarJogo(jogo);
 
         //tentar carregar um jogo encerrado deve impedir o jogador e pedir um Novo Jogo
-        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo(1);});
+        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo(1, mapa);});
 
         assertEquals("Este jogo já foi finalizado! Inicie um novo.", excecao.getMessage());
     }
@@ -117,6 +124,6 @@ public class JogoServiceTest {
     public void test_Apagar_Slot_Inexistente() throws JogoException {
 
         //deleta o jogo e verifica se foi excluido corretmente
-        assertThrows(JogoException.class, () -> {jogoService.apagarJogo(1);;});
+        assertThrows(JogoException.class, () -> {jogoService.apagarJogo(99);;});
     }
 }

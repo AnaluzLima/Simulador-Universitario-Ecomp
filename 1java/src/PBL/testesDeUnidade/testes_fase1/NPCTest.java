@@ -1,4 +1,4 @@
-package PBL.testesDeUnidade;
+package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.TempoException;
 import PBL.fase_1.model.Aparencia;
@@ -15,8 +15,8 @@ public class NPCTest {
     private Colega colega;
     private Funcionario funcionario;
     private Professor professor;
-    private Animal cachorroBravo;
-    private Animal gatoFofo;
+    private Animal cachorro;
+    private Animal gato;
 
     @BeforeEach
     public void inicializa() {
@@ -25,8 +25,8 @@ public class NPCTest {
         funcionario = new Funcionario("Maeli");
         professor = new Professor("Bianca", 7);
 
-        cachorroBravo = new Animal("Velinho do 5", 1.0); //100% de chance de ataque
-        gatoFofo = new Animal("Fabio Junior", 0.0); //0% de chance de ataque
+        cachorro = new Animal("Velinho do 5", 1.0); //100% de chance de ataque
+        gato = new Animal("Fabio Junior", 0.0); //0% de chance de ataque
 
         jogador.getMotivacao().setValor(50);
     }
@@ -35,12 +35,12 @@ public class NPCTest {
     public void test_Modificar_Relacao() {
 
         //tenta passar do limite máximo (10)
-        colega.modificarRelacao(15);
-        assertEquals(10, colega.getRelacao());
+        jogador.getCelular().modificarAmizade("Scooby", 15);
+        assertEquals(10, jogador.getCelular().getNivelAmizade("Scooby"));
 
         //tenta passar do limite mínimo (0)
-        colega.modificarRelacao(-20);
-        assertEquals(0, colega.getRelacao());
+        jogador.getCelular().modificarAmizade("Scooby", -20);
+        assertEquals(0, jogador.getCelular().getNivelAmizade("Scooby"));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class NPCTest {
     @Test
     public void test_Pedir_Contato_Aceito() throws TempoException {
         //aumenta a relação para o mínimo exigido (3)
-        colega.setRelacao(3);
+        jogador.getCelular().modificarAmizade("Scooby", 3);
 
         String resposta = colega.pedirContato(jogador);
 
@@ -76,7 +76,7 @@ public class NPCTest {
     @Test
     public void test_Pedir_Contato_Repetido() throws TempoException {
         //tem relação e já está no celular
-        colega.setRelacao(5);
+        jogador.getCelular().modificarAmizade("Scooby", 5);
         jogador.getCelular().adicionarContato(colega);
 
         String resposta = colega.pedirContato(jogador);
@@ -102,7 +102,7 @@ public class NPCTest {
         //-3 Tempo, +10 Motivação, +1 Relação
         assertEquals(97, jogador.getTempo());
         assertEquals(60, jogador.getMotivacao().getValor()); //50+10
-        assertEquals(1, colega.getRelacao());
+        assertEquals(1, jogador.getCelular().getNivelAmizade("Scooby"));
     }
 
     //Funcionario
@@ -113,7 +113,7 @@ public class NPCTest {
         //-1 Tempo, +5 Motivação, +1 Relação
         assertEquals(99, jogador.getTempo());
         assertEquals(55, jogador.getMotivacao().getValor()); //50+5
-        assertEquals(1, funcionario.getRelacao());
+        assertEquals(1, jogador.getCelular().getNivelAmizade("Maeli"));
     }
 
     //Professor
@@ -125,28 +125,28 @@ public class NPCTest {
         assertEquals(97, jogador.getTempo());
         assertEquals(5, jogador.getConhecimento().getValor());
         assertEquals(86, jogador.getEnergia().getValor());
-        assertEquals(1, professor.getRelacao());
+        assertEquals(1, jogador.getCelular().getNivelAmizade("Bianca"));
     }
 
     //Animal
     @Test
     public void test_Interagir_Animal_Ataque() throws TempoException {
-        cachorroBravo.interagir(jogador);
+        cachorro.interagir(jogador);
 
         //-1 Tempo, -30 Saúde, -5 Energia, -2 Relação
         assertEquals(99, jogador.getTempo());
         assertEquals(70, jogador.getSaude().getValor());
         assertEquals(95, jogador.getEnergia().getValor());
-        assertEquals(0, cachorroBravo.getRelacao()); // Trava no 0
+        assertEquals(0, jogador.getCelular().getNivelAmizade("Velinho do 5")); // Trava no 0
     }
     @Test
     public void test_Interagir_Animal_Carinho() throws TempoException {
-        gatoFofo.interagir(jogador);
+        gato.interagir(jogador);
 
         //-1 Tempo, +10 Motivação, +5 Energia, +1 Relação
         assertEquals(99, jogador.getTempo());
         assertEquals(60, jogador.getMotivacao().getValor()); //50+10
         assertEquals(100, jogador.getEnergia().getValor()); // Trava no 100
-        assertEquals(1, gatoFofo.getRelacao());
+        assertEquals(1, jogador.getCelular().getNivelAmizade("Fabio Junior"));
     }
 }

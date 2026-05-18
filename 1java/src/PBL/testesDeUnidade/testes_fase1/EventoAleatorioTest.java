@@ -1,4 +1,4 @@
-package PBL.testesDeUnidade;
+package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.DinheiroException;
 import PBL.exception.TempoException;

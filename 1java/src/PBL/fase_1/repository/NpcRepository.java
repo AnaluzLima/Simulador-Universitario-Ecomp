@@ -5,6 +5,7 @@ import PBL.fase_1.model.personagens.Colega;
 import PBL.fase_1.model.personagens.Funcionario;
 import PBL.fase_1.model.personagens.Professor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,12 +15,19 @@ public class NpcRepository {
     private List<Colega> colegas;
     private List<Funcionario> funcionarios;
 
+    public NpcRepository(){
+        this.animais = new ArrayList<>();
+        this.professores = new ArrayList<>();
+        this.colegas = new ArrayList<>();
+        this.funcionarios = new ArrayList<>();
+    }
+
 
     public void carregarNPCs(){
-        this.animais = carregarAnimais();
-        this.professores = carregarProfessores();
-        this.colegas = carregarColegas();
-        this.funcionarios = carregarFuncionarios();
+        carregarAnimais();
+        carregarProfessores();
+        carregarColegas();
+        carregarFuncionarios();
     }
 
     public List<Animal> carregarAnimais() {
@@ -37,8 +45,10 @@ public class NpcRepository {
         //sofrerá modificações no futuro, adicionando mais professores
 
         this.professores.add(new Professor("Ana Lúcia", 3));
-        this.professores.add(new Professor("Wild Freitas", 6));
-        this.professores.add(new Professor("Michele Fúlvia", 8));
+        this.professores.add(new Professor("Wild", 6));
+        this.professores.add(new Professor("Michele", 8));
+        this.professores.add(new Professor("Bianca", 5));
+        this.professores.add(new Professor("João", 4));
 
         return this.professores;
     }

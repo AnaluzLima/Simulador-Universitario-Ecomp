@@ -1,4 +1,4 @@
-package PBL.testesDeUnidade;
+package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.fase_1.model.Celular;
 import PBL.fase_1.model.Local;
@@ -56,13 +56,13 @@ public class CelularTest {
 
     @Test
     public void test_Registrar_Atividade_Armazena_Corretamente_No_Historico() {
-        //No celular, será possivel todas as suas ações anteriores
-        celular.registrarAtividade("Estudou na Biblioteca");
-        celular.registrarAtividade("Foi ao Bandejão");
+        //No celular, será possivel ver todas as suas ações anteriores
+        celular.adicionarRegistro("Estudou na Biblioteca");
+        celular.adicionarRegistro("Foi ao Bandejão");
 
         assertEquals(2, celular.getHistoricoAtividades().size());
-        assertEquals("Estudou na Biblioteca", celular.getHistoricoAtividades().get(0));
-        assertEquals("Foi ao Bandejão", celular.getHistoricoAtividades().get(1));
+        assertEquals("Estudou na Biblioteca", celular.getHistoricoAtividades().get(0).getTexto());
+        assertEquals("Foi ao Bandejão", celular.getHistoricoAtividades().get(1).getTexto());
     }
 
     @Test
@@ -105,12 +105,34 @@ public class CelularTest {
     @Test
     public void test_Encapsulamento_De_Atividades() {
         //Mesma verificação para as atividades
-        celular.registrarAtividade("Atividade Oficial");
+        celular.adicionarRegistro("Atividade Oficial");
 
-        List<String> lista = celular.getHistoricoAtividades();
-        lista.add("Atividade Falsa");
+        List<Celular.Registro> lista = celular.getHistoricoAtividades();
+        lista.add(new Celular.Registro("Atividade Falsa", 0));
 
-        assertFalse(celular.getHistoricoAtividades().contains("Atividade Falsa"));
         assertEquals(1, celular.getHistoricoAtividades().size());
+        assertNotEquals("Atividade Falsa", celular.getHistoricoAtividades().get(0).getTexto());
+    }
+
+    @Test
+    public void test_Modificar_Nivel_Amizade_Limites() {
+        //um npc que o jogador acabou de conhecer começa com amizade 0
+        assertEquals(0, celular.getNivelAmizade("Bianca"));
+
+        //aumenta a amizade para 5
+        celular.modificarAmizade("Bianca", 5);
+        assertEquals(5, celular.getNivelAmizade("Bianca"));
+
+        //tenta subir a amizade além do limite máximo (10)
+        celular.modificarAmizade("Bianca", 10);
+
+        // 5 + 10 = 15, mas o celular deve travar em 10
+        assertEquals(10, celular.getNivelAmizade("Bianca"));
+
+        //tenta descer a amizade abaixo do limite mínimo (0)
+        celular.modificarAmizade("Bianca", -20);
+
+        // 10 - 20 = -10, mas o celular deve travar em 0
+        assertEquals(0, celular.getNivelAmizade("Bianca"));
     }
 }

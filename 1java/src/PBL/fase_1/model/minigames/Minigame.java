@@ -1,7 +1,5 @@
 package PBL.fase_1.model.minigames;
 
-//ESSAS CLASSES (Minigame e suas subclasses) NÃO FORAM CONCLUIDAS
-
 public abstract class Minigame {
     private final String nome;
     private final String area; //texto, matemática, software ou hardware
@@ -37,5 +35,4 @@ public abstract class Minigame {
         }
     }
 
-    public abstract void jogar(int desempenhoAtual);
 }

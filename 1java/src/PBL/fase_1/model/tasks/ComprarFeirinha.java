@@ -32,8 +32,8 @@ public class ComprarFeirinha extends Atividade{
         jogador.modificarDinheiro(-this.preco); //desconta o preço do item
         jogador.modificarTempo(-2); //gasta 2 pontos de tempo
 
-        jogador.getSkin().addAcessorio(this.item); //adiciona o acessorio na lista de acessorios do jogador
-        jogador.getSkin().setAcessorioAtual(this.item); //veste o novo item
+        jogador.getSkin().desbloquearAcessorio(this.item); //adiciona o acessorio na lista de acessorios do jogador
+        jogador.getSkin().toggleAcessorio(this.item); //veste o novo item
 
         jogador.getEnergia().modificar(10); //aumenta 10 de energia
         jogador.getMotivacao().modificar(15); //aumenta 15 de motivação

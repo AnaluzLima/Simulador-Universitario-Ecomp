@@ -27,7 +27,7 @@ public class Professor extends NPC {
         jogador.getConhecimento().modificar(5); //ganha 5 de conhecimento
         jogador.getEnergia().modificar(-(this.rigor * 2)); //perde uma quantidade maior de energia quanto mais exigente
                                                            //for o professor
-        this.modificarRelacao(1); //aumenta a relacao
+        jogador.getCelular().modificarAmizade(this.getNome(), 1); //aumenta a relacao
     }
 
     private int getRigor(){

@@ -1,4 +1,4 @@
-package PBL.testesDeUnidade;
+package PBL.testesDeUnidade.testes_fase1;
 
 import PBL.exception.GreveException;
 import PBL.exception.JogoException;
@@ -20,7 +20,7 @@ public class AtividadeTest {
 
     @BeforeEach
     public void inicializa() {
-        jogador = new Jogador("Luz", new Aparencia("Padrão"));
+        jogador = new Jogador("Luz", new Aparencia("padrão"));
         disciplina = new Disciplina("Cálculo", null, 60, 0, null);
         colega = new Colega("Maeli");
     }
@@ -53,8 +53,8 @@ public class AtividadeTest {
     @Test
     public void test_ComprarFeirinha_Item_Repetido() throws JogoException {
         //jogador já tem a "Pulseira"
-        jogador.getSkin().addAcessorio("Pulseira");
-        ComprarFeirinha comprar = new ComprarFeirinha("Pulseira", 10);
+        jogador.getSkin().desbloquearAcessorio("folhas");
+        ComprarFeirinha comprar = new ComprarFeirinha("folhas", 10);
 
         JogoException erro = assertThrows(JogoException.class, () -> {comprar.executar(jogador);});
         assertEquals("Você já comprou este item!", erro.getMessage());
@@ -135,7 +135,7 @@ public class AtividadeTest {
         roleAcompanhado.executar(jogador);
         assertEquals(40, jogador.getMotivacao().getValor()); //ganha 40 de motivação ao sair com um amigo
 
-        assertEquals(2, colega.getRelacao()); //aumenta a relacao com o colega
+        assertEquals(2, jogador.getCelular().getNivelAmizade("Maeli")); //aumenta a relacao com o colega
     }
 
     //Praticar Esporte

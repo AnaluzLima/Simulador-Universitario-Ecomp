@@ -3,17 +3,17 @@ package PBL.fase_1.model.personagens;
 import PBL.exception.TempoException;
 import PBL.fase_1.model.Jogador;
 
-public class Colega extends NPC {
-    public Colega(String nome){
+public class Funcionario extends NPC {
+
+    public Funcionario(String nome) {
         super(nome);
     }
 
     @Override
     public void interagir(Jogador jogador) throws TempoException {
-        //Ao interagir com um colega:
-        jogador.modificarTempo(-3); //você perde 3 pontos de tempo
-        jogador.getMotivacao().modificar(10); //ganha 10 de motivação
+        //ao interagir com um funcionario da UEFS:
+        jogador.modificarTempo(-1); //gasta 1 ponto de tempo
+        jogador.getMotivacao().modificar(5); //ganha 5 de motivação
         jogador.getCelular().modificarAmizade(this.getNome(), 1); //aumenta sua relação em +1
-
     }
 }

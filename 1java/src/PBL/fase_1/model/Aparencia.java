@@ -1,44 +1,96 @@
 package PBL.fase_1.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import PBL.exception.JogoException;
+
+import java.util.*;
 
 /**Essa classe tem como objetivo armazenar as skins do jogador
  * A ideia é que no menu inicial, ao criar um novo jogo, o jogador possa escolher qual será seu personagem.
- * Ao longo do jogo, ele poderá completar missões para ganhar novos acessórios para seu personagem, ou comprar com dionheiro.*/
+ * Ao longo do jogo, ele poderá completar missões para ganhar novos acessórios para seu personagem, ou comprar com dionheiro.
+ *
+ * Essa classe foi modificada para a fase 2, removendo funções que não serão mais necessárias e acrescentando novas, como a Lista de acessorios equipados,
+ * o estado atual de movimento do jogador e a direção.*/
+
+
 
 public class Aparencia {
     private final String skinBase; //sprite base do jogador
-    private String acessorioAtual; //padrão, com mochila, sem mochila, etc
-    private List<String> acessoriosDesbloqueados;
+    private Set<String> acessoriosDesbloqueados;
+    private List<String> acessoriosEquipados;
+    private String estadoAtual; // idle, walk, interact, ...
+    private String direcaoAtual; // frente, costas, esquerda direita
+
+    private static final List<String> ORDEM_CAMADAS = Arrays.asList(
+            "camisa", "oculos", "luva", "folhas", "flor", "blushed"
+        // Camada mais baixa                                Camada mais alta
+
+    );
 
     public Aparencia(String skinBase) {
+        this.acessoriosEquipados = new ArrayList<>();
+        this.acessoriosDesbloqueados = new HashSet<>();
+
         this.skinBase = skinBase;
-        this.acessorioAtual = "padrão";
-        this.acessoriosDesbloqueados = new ArrayList<>();
+        this.estadoAtual = "idle";
+        this.direcaoAtual = "direita";
+
         this.acessoriosDesbloqueados.add("padrão");
+        this.acessoriosEquipados.add("padrão");
     }
 
     public String getSkinBase(){
         return this.skinBase;
     }
 
-    public String getAcessorioAtual(){
-        return this.acessorioAtual;
-    }
-    public void setAcessorioAtual(String acessorioAtual){
-        this.acessorioAtual = acessorioAtual;
+    public List<String> getAcessoriosEquipados() {
+        //cópia da lista para ordenar sem quebrar a estrutura
+        List<String> listaOrdenada = new ArrayList<>(this.acessoriosEquipados);
+
+        //lambda para ordenar com base no índice da lista oficial de camadas
+        listaOrdenada.sort((a1, a2) -> Integer.compare(ORDEM_CAMADAS.indexOf(a1), ORDEM_CAMADAS.indexOf(a2)));
+
+        return listaOrdenada;
     }
 
-    public void addAcessorio(String acessorio){
+    public void toggleAcessorio(String acessorio) throws JogoException {
+        //só pode mexer se já tiver pego o acessório ao longo do jogo
         if (!this.acessoriosDesbloqueados.contains(acessorio)) {
-            this.acessoriosDesbloqueados.add(acessorio);
+            throw new JogoException("Você ainda não desbloqueou este acessório!");
         }
+
+        //se já estiver equipado, o clique remove (desequipa)
+        if (this.acessoriosEquipados.contains(acessorio)) {
+            this.acessoriosEquipados.remove(acessorio);
+        }
+        //se não estiver equipado, o clique adiciona (equipa)
+        else {
+            this.acessoriosEquipados.add(acessorio);
+        }
+    }
+
+    public void desbloquearAcessorio(String acessorio){
+        this.acessoriosDesbloqueados.add(acessorio);
+    }
+
+    public boolean isAcessorioDesbloqueado(String acessorio) {
+        return this.acessoriosDesbloqueados.contains(acessorio);
     }
 
     public List<String> getAcessoriosDesbloqueados(){
         return new ArrayList<>(acessoriosDesbloqueados);
     }
 
-    //futuramente adicionar um metodo que pega o arquivo da pasta de sprites
+    public String getEstadoAtual() {
+        return this.estadoAtual;
+    }
+    public void setEstadoAtual(String estadoAtual) {
+        this.estadoAtual = estadoAtual;
+    }
+    public String getDirecaoAtual() {
+        return this.direcaoAtual;
+    }
+    public void setDirecaoAtual(String direcaoAtual) {
+        this.direcaoAtual = direcaoAtual;
+    }
 }
+//futuramente adicionar um metodo que pega o arquivo da pasta de sprites

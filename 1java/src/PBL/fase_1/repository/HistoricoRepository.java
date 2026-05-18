@@ -4,22 +4,24 @@ import PBL.fase_1.model.Disciplina;
 import PBL.fase_1.model.Historico;
 import PBL.fase_1.model.Mapa;
 
+import java.util.Set;
+
 public class HistoricoRepository { //todas as disciplinas do curso
     public void carregarHistorico(Historico historico, Mapa mapa, MinigameRepository miniRepo) {
         //1º
         Disciplina exa614 = new Disciplina("Tópicos de Formação Humanística", miniRepo.buscarMinigamePorArea("Texto"), 60, 0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
         Disciplina exa854 = new Disciplina("MI Algoritmos",miniRepo.buscarMinigamePorArea("Software"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
-        Disciplina exa861 = new Disciplina("Introdução à Engenharia de Computação", miniRepo.buscarMinigamePorArea("Texto"), 30,0, mapa.buscarLocalPorNome("Pavilhão"));
-        Disciplina exa801 = new Disciplina("Algoritmos e Programação I", miniRepo.buscarMinigamePorArea("Software"),60,0, mapa.buscarLocalPorNome("Pavilhão"));
+        Disciplina exa861 = new Disciplina("Introdução à Engenharia de Computação", miniRepo.buscarMinigamePorArea("Texto"), 30,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
+        Disciplina exa801 = new Disciplina("Algoritmos e Programação I", miniRepo.buscarMinigamePorArea("Software"),60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
         Disciplina exa543 = new Disciplina("Introdução ao Cálculo", miniRepo.buscarMinigamePorArea("Matemática"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
         Disciplina tec497 = new Disciplina("Introdução à Eletrônica", miniRepo.buscarMinigamePorArea("Hardware"), 30,0, mapa.buscarLocalPorNome("LEDS"));
-        Disciplina tec503 = new Disciplina("Produção de Textos Técnicos e Acadêmicos", miniRepo.buscarMinigamePorArea("Texto"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 3"));
+        Disciplina tec503 = new Disciplina("Produção de Textos Técnicos e Acadêmicos", miniRepo.buscarMinigamePorArea("Texto"), 60,0, mapa.buscarLocalPorNome("Módulo 3"));
         exa854.addCoRequisito(exa801); exa801.addCoRequisito(exa854);
 
         historico.getCursando().addAll(java.util.Arrays.asList(exa614, exa854, exa861, exa801, exa543, tec497, tec503));
 
         //2º
-        Disciplina exa704 = new Disciplina("Cálculo Diferencial e Integral I E", miniRepo.buscarMinigamePorArea("Matemática"), 60,0, mapa.buscarLocalPorNome("Pavilhão"));
+        Disciplina exa704 = new Disciplina("Cálculo Diferencial e Integral I E", miniRepo.buscarMinigamePorArea("Matemática"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 2"));
         Disciplina exa806 = new Disciplina("Estrutura de Dados",miniRepo.buscarMinigamePorArea("Software"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
         Disciplina tec221 = new Disciplina("Tópicos de Formação Complementar",miniRepo.buscarMinigamePorArea("Texto"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 3"));
         Disciplina tec401 = new Disciplina("Circuitos Digitais",miniRepo.buscarMinigamePorArea("Hardware"), 30,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 3"));
@@ -50,7 +52,7 @@ public class HistoricoRepository { //todas as disciplinas do curso
 
         //5º
         Disciplina exa703 = new Disciplina("Álgebra Linear I E",miniRepo.buscarMinigamePorArea("Matemática"), 60, 0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
-        Disciplina fis310 = new Disciplina("Física III",miniRepo.buscarMinigamePorArea("Matemática"), 90, 0, mapa.buscarLocalPorNome("Pavilhão"));
+        Disciplina fis310 = new Disciplina("Física III",miniRepo.buscarMinigamePorArea("Matemática"), 90, 0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 4"));
         Disciplina tec409 = new Disciplina("Redes de Computadores",miniRepo.buscarMinigamePorArea("Hardware"), 60, 0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 3"));
         Disciplina tec502 = new Disciplina("MI Concorrência e Conectividade",miniRepo.buscarMinigamePorArea("Hardware"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 3"));
         Disciplina exa709 = new Disciplina("Probabilidade e Estatística I-E",miniRepo.buscarMinigamePorArea("Matemática"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
@@ -58,8 +60,8 @@ public class HistoricoRepository { //todas as disciplinas do curso
         tec502.addPreRequisito(tec408); tec502.addCoRequisito(tec409); exa709.addPreRequisito(exa704);
 
         //6º
-        Disciplina exa810 = new Disciplina("Banco de Dados",miniRepo.buscarMinigamePorArea("Software"), 30, 0, mapa.buscarLocalPorNome("Pavilhão"));
-        Disciplina exa613 = new Disciplina("MI Engenharia de Software",miniRepo.buscarMinigamePorArea("Software"), 60,0, mapa.buscarLocalPorNome("Pavilhão"));
+        Disciplina exa810 = new Disciplina("Banco de Dados",miniRepo.buscarMinigamePorArea("Software"), 30, 0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
+        Disciplina exa613 = new Disciplina("MI Engenharia de Software",miniRepo.buscarMinigamePorArea("Software"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
         Disciplina exa616 = new Disciplina("Empreendedorismo I",miniRepo.buscarMinigamePorArea("Texto"), 60,60, mapa.buscarLocalPorNome("Salas de Aula do Módulo 3"));
         Disciplina exa809 = new Disciplina("Engenharia de Software",miniRepo.buscarMinigamePorArea("Software"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 5"));
         Disciplina tec217 = new Disciplina("Métodos Computacionais",miniRepo.buscarMinigamePorArea("Hardware"), 60,0, mapa.buscarLocalPorNome("Salas de Aula do Módulo 3"));
@@ -114,6 +116,53 @@ public class HistoricoRepository { //todas as disciplinas do curso
                 exa612, tec222, exa224));
 
         historico.getAprovadas().clear();
+    }
+
+    public void reconstruirDisciplinas(Historico historico, Mapa mapa, MinigameRepository miniRepo) {
+        Historico grade = new Historico();
+        this.carregarHistorico(grade, mapa, miniRepo); //preenche a grade com todas as matérias originais do jogo.
+
+        //pega as listas de matérias que vieram quebradas do save e manda para a função ArrumarLista
+        //usando a 'grade' como manual
+        ArrumarLista(historico.getCursando(), grade, mapa);
+        ArrumarLista(historico.getPendentes(), grade, mapa);
+        ArrumarLista(historico.getAprovadas(), grade, mapa);
+    }
+
+    private void ArrumarLista(Set<Disciplina> listaDoJogador, Historico grade, Mapa mapa) {
+        for (Disciplina materiaSalva : listaDoJogador) {
+            //vai na grade original e procura a matéria perfeita que tem o mesmo nome da matéria do save
+            Disciplina materiaCorreta = buscarPorNome(materiaSalva.getNome(), grade);
+
+            //se ele encontrou a matéria
+            if (materiaCorreta != null) {
+                //pega os requisitos e o minigame da matéria perfeita e coloca na matéria do jogador.
+                materiaSalva.setPreRequisitos(materiaCorreta.getPreRequisitos());
+                materiaSalva.setCoRequisitos(materiaCorreta.getCoRequisitos());
+                materiaSalva.setMinigame(materiaCorreta.getMinigame());
+
+                //olha o nome da sala na matéria perfeita e depois pede pro Mapa do jogo atual buscar o Local real
+                //e conecta o jogador a esse Local real
+                materiaSalva.setSala(mapa.buscarLocalPorNome(materiaCorreta.getSala().getNome()));
+            }
+        }
+    }
+
+    private Disciplina buscarPorNome(String nome, Historico grade) {
+        //vasculha as matérias que estão no "cursando"
+        for (Disciplina d : grade.getCursando()) {
+            if (d.getNome().equals(nome)) return d; //achou? da return
+        }
+        //se não achou, olha nas pendentes
+        for (Disciplina d : grade.getPendentes()) {
+            if (d.getNome().equals(nome)) return d;
+        }
+        //se não achou, olha nas aprovadas
+        for (Disciplina d : grade.getAprovadas()) {
+            if (d.getNome().equals(nome)) return d;
+        }
+        //se não achou, retorna null
+        return null;
     }
 }
 

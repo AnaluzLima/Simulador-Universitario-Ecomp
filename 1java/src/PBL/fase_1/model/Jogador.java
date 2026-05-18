@@ -4,6 +4,7 @@ import PBL.exception.DinheiroException;
 import PBL.exception.TempoException;
 
 import java.util.List;
+import java.util.Set;
 
 /**Essa classe representa o jogador e define tudo que é essencial para sua existência.
  * Ela é responsável por alterar ses atributos e informações necessárias para o andamento do jogo*/
@@ -125,7 +126,7 @@ public class Jogador {
     }
 
     public void atualizarDesempenho() { //o atributo de desempenho academico é a media do desempenho nas matérias
-        List<Disciplina> materias = this.getHistorico().getCursando(); //pega as materias que o jogador está cursado
+        Set<Disciplina> materias = this.getHistorico().getCursando(); //pega as materias que o jogador está cursado
 
         if (materias.isEmpty()) {
             return;
