@@ -31,13 +31,10 @@ public class NpcRepository {
     }
 
     public List<Animal> carregarAnimais() {
-        //sofrerá modificações no futuro, adicionando mais animais
         this.animais.add(new Animal("Scooby", 0.05));
+        this.animais.add(new Animal("Velhote", 0.80));
         this.animais.add(new Animal("Fábio Junior", 0.60));
-        this.animais.add(new Animal("Nariz", 0.10));
-        this.animais.add(new Animal("Pitufina", 0.50));
-        this.animais.add(new Animal("Mico", 0.80));
-        this.animais.add(new Animal("Rapozinha", 0.10));
+        this.animais.add(new Animal("Rajadinho", 0.50));
 
         return this.animais;
     }
@@ -50,19 +47,43 @@ public class NpcRepository {
         this.professores.add(new Professor("Bianca", 5));
         this.professores.add(new Professor("João", 4));
 
+        this.professores.add(new Professor("Girassolaria", 10));
+        this.professores.add(new Professor("Ainstein", 10)); //propositalmente escrito errado
+        this.professores.add(new Professor("Vector", 2));
+        this.professores.add(new Professor("Alberto", 3));
+        this.professores.add(new Professor("Cristian", 7));
+        this.professores.add(new Professor("Delrio", 8));
+        this.professores.add(new Professor("Gab", 2));
+
+
         return this.professores;
     }
     public List<Funcionario> carregarFuncionarios(){
-        //sofrerá modificações no futuro, adicionando mais funcionarios
-        this.funcionarios.add(new Funcionario("Maeli"));
+        this.funcionarios.add(new Funcionario("Mãeli"));
 
         return this.funcionarios;
     }
 
     public List<Colega> carregarColegas() {
+        this.colegas.add(new Colega("Naamã"));
 
-        //sofrerá modificações no futuro, adicionando mais colegas
-        this.colegas.add(new Colega("Luz"));
+        this.colegas.add(new Colega("Daniel"));
+        this.colegas.add(new Colega("Julia"));
+        this.colegas.add(new Colega("Ana Julia"));
+        this.colegas.add(new Colega("Bruna"));
+        this.colegas.add(new Colega("Hellen"));
+        this.colegas.add(new Colega("Mazé"));
+        this.colegas.add(new Colega("Gabriel"));
+        this.colegas.add(new Colega("Larissa"));
+        this.colegas.add(new Colega("Yarlley"));
+
+        this.colegas.add(new Colega("Vivian"));
+        this.colegas.add(new Colega("Nícolas Ca."));
+        this.colegas.add(new Colega("Nícolas Ce."));
+        this.colegas.add(new Colega("Walef"));
+
+        this.colegas.add(new Colega("Maike"));
+
 
         return this.colegas;
     }

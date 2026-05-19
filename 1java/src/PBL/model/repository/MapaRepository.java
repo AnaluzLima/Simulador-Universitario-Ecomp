@@ -164,11 +164,9 @@ public class MapaRepository {
 
 
         List<Animal> animais = npcR.carregarAnimais();
-        locais.get("Modulo5").addNPC(animais.get(1)); //Fábio Junior
-        locais.get("Modulo3").addNPC(animais.get(0)); //Scooby
-        locais.get("Modulo2").addNPC(animais.get(2)); //Nariz
-        locais.get("Modulo7").addNPC(animais.get(5)); //Raposinha
-        locais.get("Portao").addNPC(animais.get(3)); //Pitufina
-        locais.get("Modulo3").addNPC(animais.get(4)); //Mico
+        locais.get("Cantina3").addNPC(animais.get(0)); //Scooby
+        locais.get("PAT5").addNPC(animais.get(1)); //Velhote
+        locais.get("Modulo7").addNPC(animais.get(2)); //Fábio Junior
+        locais.get("Modulo4").addNPC(animais.get(3)); // Rajadinho
     }
 }
