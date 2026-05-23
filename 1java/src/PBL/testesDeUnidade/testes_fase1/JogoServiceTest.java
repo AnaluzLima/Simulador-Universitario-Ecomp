@@ -7,6 +7,7 @@ import PBL.model.model.Jogador;
 import PBL.model.model.Jogo;
 import PBL.model.model.Mapa;
 import PBL.model.model.minigames.MinigameSoftware;
+import PBL.model.model.minigames.MinigameTexto;
 import PBL.model.repository.HistoricoRepository;
 import PBL.model.repository.JogoRepository;
 import PBL.model.repository.MinigameRepository;
@@ -40,29 +41,54 @@ public class JogoServiceTest {
 
         jogador = new Jogador("Luz", new Aparencia("Padrão"));
         mapa = new Mapa(true);
-        jogo = new Jogo(1, jogador, mapa);
+        jogo = new Jogo("a", jogador, mapa);
 
         programacao = new Disciplina("Programação", new MinigameSoftware(), 60, 0, null);
     }
 
     @Test
-    public void test_Iniciar_Semana_De_Provas() throws Exception {
-        //o jogador cursa a matéria de Programação
-        jogador.getHistorico().adicionarPendente(programacao);
-        jogador.getHistorico().matricular(Arrays.asList(programacao));
+    public void test_Preparar_E_Jogar_Semana_De_Provas() throws JogoException {
+        //prepara o cenário
+        Jogador aluno = new Jogador("Luz", new Aparencia("padrão"));
 
-        //Service inicia a semana de provas
-        jogoService.iniciarSemanaDeProvas(jogador);
+        //cria uma disciplina focada em digitação
+        MinigameTexto provaDigitacao = new MinigameTexto();
+        Disciplina ptta = new Disciplina("PTTA", provaDigitacao, 60, 0, null);
 
-        //Os minigames serão implementados futuramente, então a nota será definida manualmente
-        programacao.registrarNota(9);
+        aluno.getHistorico().adicionarPendente(ptta);
+        aluno.getHistorico().matricular(Arrays.asList(ptta));
 
-        assertEquals(9.0, programacao.getNota());
-        assertTrue(programacao.isProvaFeita());
+        //o Service prepara a semana de provas
+        jogoService.prepararSemanaDeProvas(aluno);
+
+        //verifica se a preparação funcionou (o jogador está em prova e um texto foi sorteado)
+        assertTrue(aluno.isFazendoProva());
+        assertNotNull(provaDigitacao.getTextoAtual());
+
+        //passamos para o método avaliar, como se o jogador tivesse digitado perfeitamente
+        String textoSorteado = provaDigitacao.getTextoAtual();
+
+        //simula que ele digitou o texto inteiro corretamente
+        provaDigitacao.avaliarDigitacao(textoSorteado);
+
+        //registra a nota obtida na matéria
+        ptta.registrarNota(provaDigitacao.getPontuacao());
+
+        assertEquals(10.0, ptta.getNota());
+        assertTrue(ptta.isProvaFeita());
     }
 
     @Test
-    public void test_Encerrar_Semestre_Nao_Formado_Avanca_Semestre_E_Salva() throws JogoException {
+    public void test_Preparar_Provas_Sem_Materias() {
+        Jogador alunoVazio = new Jogador("Luz", new Aparencia("padrão"));
+
+        //se o aluno não tem matérias e tenta iniciar as provas, o service deve barrar
+        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.prepararSemanaDeProvas(alunoVazio);});
+        assertEquals("Você não está matriculado em nenhuma disciplina.", excecao.getMessage());
+    }
+
+    @Test
+    public void test_Encerrar_Semestre_Nao_Formado() throws JogoException {
         //jogador tem uma matéria pendente, então não está formado. Semestre inicial é 1.
         jogador.getHistorico().adicionarPendente(programacao);
 
@@ -76,26 +102,18 @@ public class JogoServiceTest {
         assertFalse(jogo.isFinalizado());
 
         //o jogo deve ter sido salvo no repositório
-        assertTrue(jogoRepository.existeSave(1));
+        assertTrue(jogoRepository.existeSave("a"));
     }
 
     @Test
-    public void test_Encerrar_Semestre_Formado_Finaliza_Jogo() throws JogoException {
+    public void test_Encerrar_Semestre_Formado() throws JogoException {
         //o jogador não tem matérias cursando nem pendentes.
 
         jogoService.encerrarSemestre(jogo);
 
         //o jogo deve ter detectado a formatura, finalizado e salvo.
         assertTrue(jogo.isFinalizado());
-        assertTrue(jogoRepository.existeSave(1));
-    }
-
-    @Test
-    public void test_Carregar_Jogo_Inexistente() {
-        //tenta carregar o Slot 10, que está vazio
-        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo(10, mapa);});
-
-        assertEquals("Não há nenhum jogo neste slot.", excecao.getMessage());
+        assertTrue(jogoRepository.existeSave("a"));
     }
 
     @Test
@@ -105,7 +123,7 @@ public class JogoServiceTest {
         jogoService.salvarJogo(jogo);
 
         //tentar carregar um jogo encerrado deve impedir o jogador e pedir um Novo Jogo
-        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo(1, mapa);});
+        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo("a", mapa);});
 
         assertEquals("Este jogo já foi finalizado! Inicie um novo.", excecao.getMessage());
     }
@@ -115,15 +133,25 @@ public class JogoServiceTest {
         jogoService.salvarJogo(jogo); //salva um jogo
 
         //verifica se o jogo é exluido corretamente
-        jogoService.apagarJogo(1);
+        jogoService.apagarJogo("a");
 
-        assertFalse(jogoRepository.existeSave(1));
+        assertFalse(jogoRepository.existeSave("a"));
     }
 
     @Test
     public void test_Apagar_Slot_Inexistente() throws JogoException {
 
         //deleta o jogo e verifica se foi excluido corretmente
-        assertThrows(JogoException.class, () -> {jogoService.apagarJogo(99);;});
+        assertThrows(JogoException.class, () -> {jogoService.apagarJogo("d");});
     }
+    @Test
+    public void test_Carregar_Jogo_Inexistente() {
+        //tenta carregar o Slot 10, que está vazio
+        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo("c", mapa);});
+
+        assertEquals("Não há nenhum jogo neste slot.", excecao.getMessage());
+    }
+
+    //Os testes test_Apagar_Slot_Inexistente() e test_Carregar_Jogo_Inexistente() existem mais por desencargo de consciencia
+    //porém, a ideia é que o jogador não tenha nem a opção de tentar fazer isso futuramente
 }

@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PersistenciaControllerTest {
 
     private PersistenciaController controller;
-    private final int SLOT = 998;
+    private final String SLOT = "teste";
 
     @BeforeEach
     public void inicializa() throws JogoException {
@@ -28,9 +28,10 @@ public class PersistenciaControllerTest {
         }
     }
 
+    //teste de integração
     @Test
     public void test_Fluxo_Completo_Criar_E_Carregar_Jogo() throws JogoException {
-        //o jogador clica em NOVO JOGO
+        //o jogador clica em novo jogo
         Jogo jogoCriado = controller.iniciarNovoJogo("Luz", SLOT, false);
 
         //verifica se o jogo nasceu certinho
@@ -65,4 +66,5 @@ public class PersistenciaControllerTest {
         //garante que o histórico não sofre de NullPointer nas disciplinas
         assertNotNull(jogoCarregado.getJogador().getHistorico().getCursando().iterator().next().getMinigame());
     }
+    //a persistência é testada mais afundo na classe JogoRepositoryTest
 }

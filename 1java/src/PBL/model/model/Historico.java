@@ -10,9 +10,9 @@ public class Historico {
     private int cargaHorariaTotal; //total de horas concluidas pelo jogador
     private static final int CARGA_HORARIA_FINAL = 2970; //carga horaria fixa maxima do curso
     private int cargaHorariaSemestre; //carga horaria do semestre que o jogador está cursando
-    private Set<Disciplina> cursando;
-    private Set<Disciplina> aprovadas;
-    private Set<Disciplina> pendentes;
+    private List<Disciplina> cursando;
+    private List<Disciplina> aprovadas;
+    private List<Disciplina> pendentes;
     private boolean semestreGreve;
 
     //para poder calcular o score
@@ -21,9 +21,9 @@ public class Historico {
     private double score;
 
     public Historico(){
-        this.pendentes = new HashSet<>();
-        this.cursando = new HashSet<>();
-        this.aprovadas = new HashSet<>();
+        this.pendentes = new ArrayList<>();
+        this.cursando = new ArrayList<>();
+        this.aprovadas = new ArrayList<>();
         this.cargaHorariaTotal = 0;
         this.cargaHorariaSemestre = 0;
         this.semestreGreve = false;
@@ -45,13 +45,13 @@ public class Historico {
         this.semestreGreve = estado;
     }
 
-    public Set<Disciplina> getCursando(){
+    public List<Disciplina> getCursando(){
         return this.cursando;
     }
-    public Set<Disciplina> getAprovadas(){
+    public List<Disciplina> getAprovadas(){
         return this.aprovadas;
     }
-    public Set<Disciplina> getPendentes(){
+    public List<Disciplina> getPendentes(){
         return this.pendentes;
     }
 

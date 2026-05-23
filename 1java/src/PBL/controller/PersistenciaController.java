@@ -29,9 +29,8 @@ public class PersistenciaController {
     }
 
 
-    // Chamado quando o jogador clica no botão "Novo Jogo".
-
-    public Jogo iniciarNovoJogo(String nomeJogador, int slot, boolean spawnFeira6) throws JogoException {
+    //chamado quando o jogador clica no botão Novo Jogo
+    public Jogo iniciarNovoJogo(String nomeJogador, String slot, boolean spawnFeira6) throws JogoException {
 
         //cria o personagem do zero
         Aparencia skinInicial = new Aparencia("padrão");
@@ -56,9 +55,8 @@ public class PersistenciaController {
         return novoJogo;
     }
 
-    //Chamado quando o jogador clica no botão "Carregar" e escolhe um slot.
-
-    public Jogo carregarJogoExistente(int slot) throws JogoException {
+    //chamado quando o jogador clica no botão "Carregar" e escolhe um slot.
+    public Jogo carregarJogoExistente(String slot) throws JogoException {
 
         //como os locais e NPCs não são salvos, recria-se o mundo base antes de dar o load
         Mapa mapaBase = new Mapa(true);
@@ -70,9 +68,8 @@ public class PersistenciaController {
         return jogoService.carregarJogo(slot, mapaBase);
     }
 
-    // Chamado quando o jogador clica no ícone de "Lixeira" em um slot de save.
-
-    public void apagarSave(int slot) throws JogoException {
+    //chamado quando o jogador clica no ícone de lixeira em um slot de save.
+    public void apagarSave(String slot) throws JogoException {
         jogoService.apagarJogo(slot);
     }
 }

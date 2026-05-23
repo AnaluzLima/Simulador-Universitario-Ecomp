@@ -2,6 +2,7 @@ package PBL.model.service;
 
 import PBL.exception.*;
 import PBL.model.model.*;
+import PBL.model.model.minigames.*;
 import PBL.model.repository.HistoricoRepository;
 import PBL.model.repository.JogoRepository;
 import PBL.model.repository.MinigameRepository;
@@ -13,6 +14,7 @@ public class JogoService {
     private final JogoRepository jogoR;
     private final HistoricoRepository historicoR;
     private final MinigameRepository minigameR;
+    private final MinigameService minigameService = new MinigameService();
 
     public JogoService(JogoRepository jogoR, HistoricoRepository historicoR, MinigameRepository minigameR) {
         this.jogoR = jogoR;
@@ -20,16 +22,32 @@ public class JogoService {
         this.minigameR = minigameR;
     }
 
-    public void iniciarSemanaDeProvas(Jogador jogador) {
-        //varre apenas as matérias que o jogador esta cursando para aplicar as provas
+    public void prepararSemanaDeProvas(Jogador jogador) throws JogoException {
+        //verifica se o aluno tem matérias matriculadas
+        if (jogador.getHistorico().getCursando().isEmpty()) {
+            throw new JogoException("Você não está matriculado em nenhuma disciplina.");
+        }
+
+        jogador.setFazendoProva(true); //trava o personagem
+
+        //olha as matérias que o jogador está cursando
         for (Disciplina materia : jogador.getHistorico().getCursando()) {
-            //Minigame minigame = materia.getMinigame();
-            //minigame.jogar(materia.getDesempenho());
+            //só prepara a prova se ela ainda não foi feita
+            if (!materia.isProvaFeita()) {
+                Minigame minigame = materia.getMinigame();
+                int desempenho = materia.getDesempenho();
 
-            //double pontuacao = minigame.getPontuacao();
-
-            //materia.registrarNota(pontuacao);
-
+                //identifica qual é a prova e usa o Service para sortear as perguntas
+                if (minigame instanceof MinigameTexto) {
+                    minigameService.prepararMinigameTexto((MinigameTexto) minigame, desempenho);
+                } else if (minigame instanceof MinigameMatematica) {
+                    minigameService.prepararMinigameMatematica((MinigameMatematica) minigame, desempenho);
+                } else if (minigame instanceof MinigameSoftware) {
+                    minigameService.prepararMinigameSoftware((MinigameSoftware) minigame, desempenho);
+                } else if (minigame instanceof MinigameHardware) {
+                    minigameService.prepararMinigameHardware((MinigameHardware) minigame, desempenho);
+                }
+            }
         }
     }
 
@@ -61,11 +79,11 @@ public class JogoService {
         jogoR.salvar(jogo);
     }
 
-    public void apagarJogo(int slot) throws JogoException {
+    public void apagarJogo(String slot) throws JogoException {
         jogoR.deletar(slot);
     }
 
-    public Jogo carregarJogo(int slot, Mapa mapa) throws JogoException {
+    public Jogo carregarJogo(String slot, Mapa mapa) throws JogoException {
         //impede de carregar um slot vazio
         if (!jogoR.existeSave(slot)) {
             throw new JogoException("Não há nenhum jogo neste slot.");

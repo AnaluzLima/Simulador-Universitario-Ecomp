@@ -71,7 +71,6 @@ public class Aparencia {
     public void desbloquearAcessorio(String acessorio){
         this.acessoriosDesbloqueados.add(acessorio);
     }
-
     public boolean isAcessorioDesbloqueado(String acessorio) {
         return this.acessoriosDesbloqueados.contains(acessorio);
     }

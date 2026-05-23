@@ -3,22 +3,22 @@ package PBL.model.model;
 /**Essa classe é uma uma classe anêmica utilizada apenas para armazenar e enviar informações essenciais do jogo*/
 
 public class Jogo {
-    private int slot;
+    private String slot;
     private Jogador jogador;
     private transient Mapa mapa;
     private boolean finalizado;
 
-    public Jogo(int slot, Jogador jogador, Mapa mapa) {
+    public Jogo(String slot, Jogador jogador, Mapa mapa) {
         this.slot = slot;
         this.jogador = jogador;
         this.mapa = mapa;
         this.finalizado = false;
     }
 
-    public int getSlot(){
+    public String getSlot(){
         return this.slot;
     }
-    public void setSlot(int slot){
+    public void setSlot(String slot){
         this.slot = slot;
     }
 

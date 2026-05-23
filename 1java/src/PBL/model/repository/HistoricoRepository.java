@@ -4,7 +4,7 @@ import PBL.model.model.Disciplina;
 import PBL.model.model.Historico;
 import PBL.model.model.Mapa;
 
-import java.util.Set;
+import java.util.List;
 
 public class HistoricoRepository { //todas as disciplinas do curso
     public void carregarHistorico(Historico historico, Mapa mapa, MinigameRepository miniRepo) {
@@ -129,7 +129,7 @@ public class HistoricoRepository { //todas as disciplinas do curso
         ArrumarLista(historico.getAprovadas(), grade, mapa);
     }
 
-    private void ArrumarLista(Set<Disciplina> listaDoJogador, Historico grade, Mapa mapa) {
+    private void ArrumarLista(List<Disciplina> listaDoJogador, Historico grade, Mapa mapa) {
         for (Disciplina materiaSalva : listaDoJogador) {
             //vai na grade original e procura a matéria perfeita que tem o mesmo nome da matéria do save
             Disciplina materiaCorreta = buscarPorNome(materiaSalva.getNome(), grade);

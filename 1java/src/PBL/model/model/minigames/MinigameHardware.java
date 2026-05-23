@@ -1,6 +1,8 @@
 package PBL.model.model.minigames;
 
-//a ideia é ter a imagem de um protoboard e o jogador vai ter que ligar os componentes da forma correta
+/**Essa classe que herda de minigames cria a lógica para o funcionamento das provas de hardware
+ * Toda prova terá sua instrução (enunciado), o ponto de origem do fio que o jogador deverá conectar e o
+ * ponto de destino*/
 
 public class MinigameHardware extends Minigame {
     private String instrucao;

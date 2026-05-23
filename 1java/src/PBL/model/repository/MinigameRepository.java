@@ -6,6 +6,9 @@ import PBL.model.model.minigames.Minigame;
 import java.util.Arrays;
 import java.util.List;
 
+/**Esse repositorio representa todas as questões dos minigames, dividindo cada metodo em um minigame com
+ * questões facies, medias e dificeis*/
+
 public class MinigameRepository {
 
     public Minigame buscarMinigamePorArea(String area) {

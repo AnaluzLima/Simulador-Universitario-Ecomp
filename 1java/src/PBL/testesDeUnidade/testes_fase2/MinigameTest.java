@@ -45,10 +45,10 @@ public class MinigameTest {
         MinigameTexto texto = new MinigameTexto();
         texto.setTextoAtual("UEFS");
 
-        texto.avaliarDigitacao(null, 10.0);
+        texto.avaliarDigitacao(null);
         assertEquals(0, texto.getPontuacao());
 
-        texto.avaliarDigitacao("", 10.0);
+        texto.avaliarDigitacao("");
         assertEquals(0, texto.getPontuacao());
     }
     @Test
@@ -58,7 +58,7 @@ public class MinigameTest {
         texto.setTextoAtual("engenharia");
 
         //jogador digitou 5 letras certas e o resto errado/faltou
-        texto.avaliarDigitacao("engenXXXXX", 10.0);
+        texto.avaliarDigitacao("engenXXXXX");
 
         //5/10 = 50% = Nota 5
         assertEquals(5, texto.getPontuacao());
@@ -68,7 +68,7 @@ public class MinigameTest {
         MinigameTexto texto = new MinigameTexto();
         texto.setTextoAtual("algoritmos");
 
-        texto.avaliarDigitacao("algoritmos", 5.0);
+        texto.avaliarDigitacao("algoritmos");
         assertEquals(10, texto.getPontuacao());
     }
 
@@ -79,8 +79,8 @@ public class MinigameTest {
         matematica.setRodada("15 + 27", "42");
 
         //resposta certa mas cheia de espaços e letras maiúsculas misturadas
-        matematica.avaliarResposta("   4 2 ", 5.0);
-        assertEquals(10, matematica.getPontuacao()); //deve acertar e ganhar 10 pelo tempo rápido
+        matematica.avaliarResposta("   4 2 ", 5);
+        assertEquals(10, matematica.getPontuacao()); //deve acertar e ganhar 10
     }
     @Test
     public void test_MinigameMatematica_Limites_De_Tempo() {
@@ -88,19 +88,19 @@ public class MinigameTest {
         matematica.setRodada("10 + 10", "20");
 
         //rápido
-        matematica.avaliarResposta("20", 9.9);
+        matematica.avaliarResposta("20", 5);
         assertEquals(10, matematica.getPontuacao());
 
         //médio
-        matematica.avaliarResposta("20", 15.0);
-        assertEquals(7, matematica.getPontuacao());
+        matematica.avaliarResposta("20", 10);
+        assertEquals(8, matematica.getPontuacao());
 
         //lento
-        matematica.avaliarResposta("20", 25.0);
-        assertEquals(5, matematica.getPontuacao());
+        matematica.avaliarResposta("20", 15);
+        assertEquals(7, matematica.getPontuacao());
 
         //errou
-        matematica.avaliarResposta("15", 5.0);
+        matematica.avaliarResposta("15", 5);
         assertEquals(0, matematica.getPontuacao());
     }
 
@@ -111,20 +111,20 @@ public class MinigameTest {
         software.setRodada("Pergunta", Arrays.asList("A", "B", "C"), 1); //correta é a B
 
         //errou o índice
-        software.avaliarResposta(0, 10.0);
+        software.avaliarResposta(0, 10);
         assertEquals(0, software.getPontuacao());
 
         //acertou rápido
-        software.avaliarResposta(1, 14.0);
+        software.avaliarResposta(1, 5);
         assertEquals(10, software.getPontuacao());
 
         //acertou médio
-        software.avaliarResposta(1, 25.0);
-        assertEquals(7, software.getPontuacao());
+        software.avaliarResposta(1, 10);
+        assertEquals(8, software.getPontuacao());
 
         //acertou lento
-        software.avaliarResposta(1, 35.0);
-        assertEquals(5, software.getPontuacao());
+        software.avaliarResposta(1, 15);
+        assertEquals(7, software.getPontuacao());
     }
 
     //testando o minigame de hardware
@@ -134,11 +134,11 @@ public class MinigameTest {
         hardware.setRodada("Ligue o circuito", "Pino 5V", "Resistor");
 
         //ligou na ordem exata ditada pelo gabarito
-        hardware.avaliarConexao("Pino 5V", "Resistor", 10.0);
+        hardware.avaliarConexao("Pino 5V", "Resistor", 10);
         assertEquals(10, hardware.getPontuacao());
 
         //ligou o destino na origem
-        hardware.avaliarConexao("Resistor", "Pino 5V", 10.0);
+        hardware.avaliarConexao("Resistor", "Pino 5V", 10);
         assertEquals(10, hardware.getPontuacao());
     }
 
@@ -148,21 +148,21 @@ public class MinigameTest {
         hardware.setRodada("Ligue o circuito", "Pino 5V", "Resistor");
 
         //ligou fios completamente diferentes
-        hardware.avaliarConexao("GND", "LED", 10.0);
+        hardware.avaliarConexao("GND", "LED", 10);
         assertEquals(0, hardware.getPontuacao());
 
         //ligou o fio de origem, mas soltou a outra ponta no nada
-        hardware.avaliarConexao("Pino 5V", "Nada", 10.0);
+        hardware.avaliarConexao("Pino 5V", "Nada", 10);
         assertEquals(0, hardware.getPontuacao());
 
         //não tentou ligar nada
-        hardware.avaliarConexao(null, null, 10.0);
+        hardware.avaliarConexao(null, null, 10);
         assertEquals(0, hardware.getPontuacao());
     }
 
     //teste do repository e do service
     @Test
-    public void test_Repository_Fabrica_De_Minigames() {
+    public void test_Repository_Criacao_De_Minigames() {
         assertInstanceOf(MinigameTexto.class, repo.buscarMinigamePorArea("Texto"));
         assertInstanceOf(MinigameMatematica.class, repo.buscarMinigamePorArea("Matemática"));
         assertInstanceOf(MinigameSoftware.class, repo.buscarMinigamePorArea("Software"));
@@ -178,6 +178,7 @@ public class MinigameTest {
 
         //o Service deve ter colocado um texto aleatório do repositório no minigame
         assertNotNull(minigame.getTextoAtual());
+        System.out.println(minigame.getTextoAtual());
         assertFalse(minigame.getTextoAtual().isEmpty());
     }
 
@@ -188,6 +189,7 @@ public class MinigameTest {
         service.prepararMinigameSoftware(minigame, 60); //dificuldade média
 
         assertNotNull(minigame.getPerguntaCodigo());
+        System.out.println(minigame.getPerguntaCodigo());
         assertNotNull(minigame.getAlternativas());
         assertFalse(minigame.getAlternativas().isEmpty());
     }
@@ -195,9 +197,10 @@ public class MinigameTest {
     @Test
     public void test_Service_Prepara_Rodada_Hardware() {
         MinigameHardware minigame = new MinigameHardware();
-        service.prepararMinigameHardware(minigame, 100); //fácil
+        service.prepararMinigameHardware(minigame, 5); //difícil
 
         assertNotNull(minigame.getInstrucao());
+        System.out.println(minigame.getInstrucao());
         assertNotNull(minigame.getPinoOrigemGabarito());
         assertNotNull(minigame.getPinoDestinoGabarito());
     }

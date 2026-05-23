@@ -56,5 +56,6 @@ public class HistoricoRepositoryTest {
         assertNotNull(disciplinaConsertada.getMinigame());
         assertNotNull(disciplinaConsertada.getSala());
         assertEquals("Software", disciplinaConsertada.getMinigame().getArea());
+        assertEquals("Salas de Aula do Módulo 5", disciplinaConsertada.getSala().getNome());
     }
 }

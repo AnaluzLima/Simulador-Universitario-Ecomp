@@ -11,17 +11,19 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+/**Essa classe é a responsável com lidar com o criação, salvamento, carregamento e exclusão do save de um jogo*/
+
 public class JogoRepository {
-    private Map<Integer, Jogo> save;
+    private Map<String, Jogo> save;
     private Gson gson;
 
     public JogoRepository() throws JogoException {
         //cria o JSON formatado e bonitinho
         this.gson = new GsonBuilder().setPrettyPrinting().create();
-        this.save = carregarArquivo();
+        this.save = carregarArquivo(); //carrega os saves existentes ao iniciar
     }
 
-    private Map<Integer, Jogo> carregarArquivo() throws JogoException {
+    private Map<String, Jogo> carregarArquivo() throws JogoException {
         File arquivo = new File("saves.json");
 
         //se o arquivo não existe, é a primeira vez que o jogador abre o jogo
@@ -30,8 +32,9 @@ public class JogoRepository {
         }
 
         try (FileReader reader = new FileReader(arquivo)) {
-            Type tipoMap = new TypeToken<Map<Integer, Jogo>>(){}.getType();
-            Map<Integer, Jogo> savesCarregados = gson.fromJson(reader, tipoMap);
+            //informa ao Gson o tipo exato do dicionário para reconstruir corretamente
+            Type tipoMap = new TypeToken<Map<String, Jogo>>(){}.getType();
+            Map<String, Jogo> savesCarregados = gson.fromJson(reader, tipoMap);
 
             return savesCarregados != null ? savesCarregados : new HashMap<>();
 
@@ -42,32 +45,32 @@ public class JogoRepository {
 
     private void salvarArquivo() throws JogoException {
         try (FileWriter writer = new FileWriter("saves.json")) {
-            gson.toJson(this.save, writer);
+            gson.toJson(this.save, writer); //converte o map inteiro para JSON e grava no disco
         } catch (Exception e) {
             throw new JogoException("ERRO! Seu jogo não foi salvo.");
         }
     }
 
     public void salvar(Jogo jogo) throws JogoException {
-        this.save.put(jogo.getSlot(), jogo);
-        salvarArquivo();
+        this.save.put(jogo.getSlot(), jogo); //adiciona ou substitui o slot
+        salvarArquivo(); //se mudou o slot, já salva no arquivo
     }
 
-    public Jogo carregar(int slot) {
-        return this.save.get(slot);
+    public Jogo carregar(String slot) {
+        return this.save.get(slot); //busca o jogo pelo nome do slot
     }
 
-    public void deletar(int slot) throws JogoException {
+    public void deletar(String slot) throws JogoException {
         if (this.save.containsKey(slot)) {
-            this.save.remove(slot);
-            salvarArquivo();
+            this.save.remove(slot); //remove do map
+            salvarArquivo(); //atualiza o arquivo
         } else {
             throw new JogoException("Não é possível apagar um slot vazio");
         }
     }
 
-    public boolean existeSave(int slot) {
-        return this.save.containsKey(slot);
+    public boolean existeSave(String slot) {
+        return this.save.containsKey(slot); //verifica se o slot existe antes de carregar ou deletar
     }
 
 }

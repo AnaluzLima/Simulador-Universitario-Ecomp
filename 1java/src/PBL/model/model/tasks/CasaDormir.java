@@ -12,7 +12,7 @@ public class CasaDormir extends Atividade{
 
     @Override
     public void executar(Jogador jogador) throws JogoException {
-        jogador.modificarTempo(-2);
+        jogador.modificarTempo(-4);
 
         if (jogador.isCansado()) { //se o jogador está cansado, ou seja, dormiu tarde
             jogador.getEnergia().modificar(40); //recupera apenas 40 de energia
