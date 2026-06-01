@@ -5,13 +5,11 @@ package PBL.model.model;
 public class Jogo {
     private String slot;
     private Jogador jogador;
-    private transient Mapa mapa;
     private boolean finalizado;
 
-    public Jogo(String slot, Jogador jogador, Mapa mapa) {
+    public Jogo(String slot, Jogador jogador) {
         this.slot = slot;
         this.jogador = jogador;
-        this.mapa = mapa;
         this.finalizado = false;
     }
 
@@ -27,13 +25,6 @@ public class Jogo {
     }
     public void setJogador(Jogador jogador){
         this.jogador = jogador;
-    }
-
-    public Mapa getMapa(){
-        return this.mapa;
-    }
-    public void setMapa(Mapa mapa){
-        this.mapa = mapa;
     }
 
     public boolean isFinalizado(){

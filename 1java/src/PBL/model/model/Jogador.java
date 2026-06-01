@@ -22,8 +22,9 @@ public class Jogador {
 
     private Celular celular;
     private Aparencia skin;
+    private boolean spawnF6;
 
-    public Jogador(String nome, Aparencia skin) {
+    public Jogador(String nome, Aparencia skin, boolean spawnF6) {
         this.nome = nome;
         this.dinheiro = 50;
         this.tempo = 100;
@@ -32,8 +33,9 @@ public class Jogador {
 
         this.historico = new Historico();
 
-        celular = new Celular();
+        this.celular = new Celular();
         this.skin = skin;
+        this.spawnF6 = spawnF6;
 
         this.energia = new Atributo("Energia", 100);
         this.saude = new Atributo("Saúde", 100);
@@ -154,6 +156,12 @@ public class Jogador {
     }
     public Atributo getDesempenhoAcademico(){
         return this.desempenhoAcademico;
+    }
+    public boolean isSpawnF6() {
+        return this.spawnF6;
+    }
+    public void setSpawnF6(boolean spawnF6) {
+        this.spawnF6 = spawnF6;
     }
 
 }

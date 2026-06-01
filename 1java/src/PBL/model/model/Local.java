@@ -16,11 +16,22 @@ public class Local {
     private transient List<Atividade> atvLocais; //atividades que podem ser feitas no local
     private transient List<NPC> npcsLocal; //npcs que estão no local
 
-    public Local(String nome){
+    //como o jogador vai ficar no local
+    private double posX;
+    private double posY;
+    private double tamanhoJogador;
+    private String imagem;
+
+    public Local(String nome, double x, double y, double tam, String png){
         this.nome = nome;
         this.conexoes = new HashSet<>();
         this.atvLocais = new ArrayList<>();
         this.npcsLocal = new ArrayList<>();
+
+        this.posX= x;
+        this.posY = y;
+        this.tamanhoJogador = tam;
+        this.imagem = png;
     }
 
     public String getNome() {
@@ -54,4 +65,18 @@ public class Local {
     public void removerAtividadesDeAula() {
         this.atvLocais.removeIf(atividade -> atividade instanceof AssistirAula);
     }
+
+    public double getPosX(){
+        return this.posX;
+    }
+    public double getPosY(){
+        return this.posY;
+    }
+    public double getTamanhoJogador() {
+        return this.tamanhoJogador;
+    }
+    public String getImagem(){
+        return this.imagem;
+    }
+
 }

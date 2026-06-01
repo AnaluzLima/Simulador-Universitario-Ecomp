@@ -39,33 +39,29 @@ public class JogoServiceTest {
         minigameRepository = new MinigameRepository();
         jogoService = new JogoService(jogoRepository, historicoRepository, minigameRepository);
 
-        jogador = new Jogador("Luz", new Aparencia("Padrão"));
-        mapa = new Mapa(true);
-        jogo = new Jogo("a", jogador, mapa);
+        jogador = new Jogador("Luz", new Aparencia("padrão"), false);
+        jogo = new Jogo("Teste", jogador);
 
         programacao = new Disciplina("Programação", new MinigameSoftware(), 60, 0, null);
     }
 
     @Test
     public void test_Preparar_E_Jogar_Semana_De_Provas() throws JogoException {
-        //prepara o cenário
-        Jogador aluno = new Jogador("Luz", new Aparencia("padrão"));
-
         //cria uma disciplina focada em digitação
         MinigameTexto provaDigitacao = new MinigameTexto();
         Disciplina ptta = new Disciplina("PTTA", provaDigitacao, 60, 0, null);
 
-        aluno.getHistorico().adicionarPendente(ptta);
-        aluno.getHistorico().matricular(Arrays.asList(ptta));
+        jogador.getHistorico().adicionarPendente(ptta);
+        jogador.getHistorico().matricular(Arrays.asList(ptta));
 
         //o Service prepara a semana de provas
-        jogoService.prepararSemanaDeProvas(aluno);
+        jogoService.prepararSemanaDeProvas(jogador);
 
         //verifica se a preparação funcionou (o jogador está em prova e um texto foi sorteado)
-        assertTrue(aluno.isFazendoProva());
+        assertTrue(jogador.isFazendoProva());
         assertNotNull(provaDigitacao.getTextoAtual());
 
-        //passamos para o método avaliar, como se o jogador tivesse digitado perfeitamente
+        //passamos para o metodo avaliar, como se o jogador tivesse digitado perfeitamente
         String textoSorteado = provaDigitacao.getTextoAtual();
 
         //simula que ele digitou o texto inteiro corretamente
@@ -80,7 +76,7 @@ public class JogoServiceTest {
 
     @Test
     public void test_Preparar_Provas_Sem_Materias() {
-        Jogador alunoVazio = new Jogador("Luz", new Aparencia("padrão"));
+        Jogador alunoVazio = new Jogador("Luz", new Aparencia("padrão"), false);
 
         //se o aluno não tem matérias e tenta iniciar as provas, o service deve barrar
         JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.prepararSemanaDeProvas(alunoVazio);});
@@ -102,18 +98,17 @@ public class JogoServiceTest {
         assertFalse(jogo.isFinalizado());
 
         //o jogo deve ter sido salvo no repositório
-        assertTrue(jogoRepository.existeSave("a"));
+        assertTrue(jogoRepository.existeSave("Teste"));
     }
 
     @Test
     public void test_Encerrar_Semestre_Formado() throws JogoException {
         //o jogador não tem matérias cursando nem pendentes.
-
         jogoService.encerrarSemestre(jogo);
 
         //o jogo deve ter detectado a formatura, finalizado e salvo.
         assertTrue(jogo.isFinalizado());
-        assertTrue(jogoRepository.existeSave("a"));
+        assertTrue(jogoRepository.existeSave("Teste"));
     }
 
     @Test
@@ -123,7 +118,7 @@ public class JogoServiceTest {
         jogoService.salvarJogo(jogo);
 
         //tentar carregar um jogo encerrado deve impedir o jogador e pedir um Novo Jogo
-        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo("a", mapa);});
+        JogoException excecao = assertThrows(JogoException.class, () -> {jogoService.carregarJogo("Teste", mapa);});
 
         assertEquals("Este jogo já foi finalizado! Inicie um novo.", excecao.getMessage());
     }
@@ -133,9 +128,9 @@ public class JogoServiceTest {
         jogoService.salvarJogo(jogo); //salva um jogo
 
         //verifica se o jogo é exluido corretamente
-        jogoService.apagarJogo("a");
+        jogoService.apagarJogo("Teste");
 
-        assertFalse(jogoRepository.existeSave("a"));
+        assertFalse(jogoRepository.existeSave("Teste"));
     }
 
     @Test

@@ -1,0 +1,94 @@
+.botao-retro {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+.botao-retro:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.botao-retro:hover .image-view {
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,2), 10, 0, 0, 0);
+}
+.botao-app{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+.botao-app:hover{
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.caixa-texto-custom {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-alignment: center;
+    -fx-text-fill: #2B1810;
+    -fx-prompt-text-fill: #8A7365;
+    -fx-font-family: "Press Start 2P";
+    -fx-font-size: 20px;
+}
+.caixa-texto-custom:focused {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+.scroll-saves .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12px;
+}
+.scroll-saves .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-saves .scroll-bar:vertical .thumb {
+    -fx-background-color: #372600;
+    -fx-background-radius: 0;
+}
+.scroll-saves .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #5c4104;
+}
+.scroll-saves .scroll-bar:vertical .increment-button,
+.scroll-saves .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-pref-height: 0;
+    -fx-padding: 0;
+}
+.scroll-saves .scroll-bar:vertical .increment-arrow,
+.scroll-saves .scroll-bar:vertical .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+.scroll-saves {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.scroll-saves .viewport {
+    -fx-background-color: transparent;
+}
+.overlay-popup {
+    -fx-background-color: rgba(55, 38, 0, 0.63);
+}
+.stack-sem-overflow {
+    -fx-clip: true;
+}
+.slider-retro .track {
+    -fx-background-color: #372600;
+    -fx-background-radius: 0;
+    -fx-pref-height: 8px;
+}
+.slider-retro .thumb {
+    -fx-background-color: #372600;
+    -fx-background-radius: 0;
+    -fx-pref-width: 16px;
+    -fx-pref-height: 20px;
+    -fx-shape: "M0,0 H1 V1 H0 Z";
+}
+.slider-retro .thumb:focused {
+    -fx-background-color: #372600;
+}
+.slider-retro .track:filled {
+    -fx-background-color: #5a3d00;
+    -fx-background-radius: 0;
+}

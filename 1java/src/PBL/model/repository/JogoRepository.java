@@ -8,7 +8,9 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**Essa classe é a responsável com lidar com o criação, salvamento, carregamento e exclusão do save de um jogo*/
@@ -38,7 +40,7 @@ public class JogoRepository {
 
             return savesCarregados != null ? savesCarregados : new HashMap<>();
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new JogoException("Não foi possível carregar os dados.");
         }
     }
@@ -46,7 +48,7 @@ public class JogoRepository {
     private void salvarArquivo() throws JogoException {
         try (FileWriter writer = new FileWriter("saves.json")) {
             gson.toJson(this.save, writer); //converte o map inteiro para JSON e grava no disco
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new JogoException("ERRO! Seu jogo não foi salvo.");
         }
     }
@@ -73,4 +75,7 @@ public class JogoRepository {
         return this.save.containsKey(slot); //verifica se o slot existe antes de carregar ou deletar
     }
 
+    public List<String> listarSlots() {
+        return new ArrayList<>(this.save.keySet());
+    }
 }

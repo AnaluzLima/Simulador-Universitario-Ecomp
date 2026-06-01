@@ -20,7 +20,7 @@ public class NPCTest {
 
     @BeforeEach
     public void inicializa() {
-        jogador = new Jogador("Luz", new Aparencia("Padrão"));
+        jogador = new Jogador("Luz", new Aparencia("Padrão"), false);
         colega = new Colega("Scooby");
         funcionario = new Funcionario("Maeli");
         professor = new Professor("Bianca", 7);

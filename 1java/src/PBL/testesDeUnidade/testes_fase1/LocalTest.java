@@ -19,8 +19,8 @@ public class LocalTest {
 
     @BeforeEach
     public void inicializa() {
-        pavilhao = new Local("Pavilhão");
-        biblioteca = new Local("Biblioteca");
+        pavilhao = new Local("Pavilhão", 0.0, 0.0, 150.0, "/resources/Locais/.png");
+        biblioteca = new Local("Biblioteca", 0.0, 0.0, 150.0, "/resources/Locais/.png");
     }
 
     @Test
@@ -81,7 +81,7 @@ public class LocalTest {
         List<Local> lista = pavilhao.getConexoes(); //tecnicamente, aqui estaria passando o endereço de conexões do pav
         // mas o return do get devolve uma cópia da lista, e não seu endereço
 
-        lista.add(new Local("Sala"));
+        lista.add(new Local("Sala", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
 
         //a lista original de conexões do Pavilhão deve continuar vazia (0)
         assertEquals(0, pavilhao.getConexoes().size());

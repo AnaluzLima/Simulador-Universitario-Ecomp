@@ -20,7 +20,7 @@ public class JogadorTest {
         //Jogador inicial: 50 reais, 100 de tempo, semestre 1
 
         skin = new Aparencia("Padrão");
-        jogador = new Jogador("Mauricio", skin);
+        jogador = new Jogador("Mauricio", skin, true);
     }
 
     @Test

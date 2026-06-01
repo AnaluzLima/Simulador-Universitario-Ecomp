@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PBL.controller.jogo.TelaJogoController">
+    <children>
+        <StackPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../estilo.css">
+            <children>
+
+                <Pane fx:id="paneMundo" prefHeight="720.0" prefWidth="1280.0">
+                    <children>
+                        <ImageView fx:id="imgMapa" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" />
+                        <StackPane fx:id="containerJogador" prefHeight="100.0" prefWidth="100.0" />
+                    </children>
+                </Pane>
+
+                <ImageView fx:id="imgFundoHud" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="false" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../resources/HUD/HUD.png" />
+                    </image>
+                </ImageView>
+
+                <Pane fx:id="controlesHud" pickOnBounds="false" prefHeight="720.0" prefWidth="1280.0">
+                    <children>
+                        <Label id="moedas" fx:id="labelMoedas" layoutX="1065.0" layoutY="44.0" prefHeight="30.0" prefWidth="181.0" text="999999">
+                            <font><Font name="Press Start 2P" size="19.0" /></font>
+                        </Label>
+                        <Label id="tempo" fx:id="labelTempo" layoutX="1065.0" layoutY="112.0" prefHeight="30.0" prefWidth="181.0" text="999999">
+                            <font><Font name="Press Start 2P" size="19.0" /></font>
+                        </Label>
+
+                        <Button id="atributos" fx:id="btnAtributos" alignment="CENTER" layoutX="160.0" layoutY="608.0" mnemonicParsing="false" onAction="#clicarAtributos" prefHeight="58.0" prefWidth="252.0" styleClass="botao-retro" text="Atributos" textAlignment="CENTER" wrapText="true">
+                            <font><Font name="Press Start 2P" size="18.0" /></font>
+                        </Button>
+
+                        <Button id="celular" fx:id="btnCelular" layoutX="1166.0" layoutY="306.0" mnemonicParsing="false" onAction="#clicarCelular" prefHeight="115.0" prefWidth="87.0" styleClass="botao-retro" />
+
+                        <Button id="avancarSemestre" layoutX="985.0" layoutY="600.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="246.0" styleClass="botao-retro">
+                            <font><Font name="Press Start 2P" size="18.0" /></font>
+                     <graphic>
+                        <ImageView fitHeight="73.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/botoes/btnSemestre.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                        </Button>
+
+                        <VBox fx:id="painelAtributos" layoutX="179.0" layoutY="383.0" prefHeight="231.0" prefWidth="211.0" visible="false" />
+
+                        <Pane fx:id="painelCelular" layoutX="1020.0" layoutY="213.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="308.0" prefWidth="220.0" visible="false">
+                            <children>
+                                <ImageView fitHeight="308.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../../resources/HUD/celularFundo.png" />
+                                    </image>
+                                </ImageView>
+
+                                <FlowPane id="apps" layoutX="22.0" layoutY="34.0" prefHeight="241.0" prefWidth="181.0">
+                                    <children>
+                                        <VBox id="contatos" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                            <children>
+                                                <Button id="appContatos" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="botao-app">
+                                                    <graphic>
+                                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image><Image url="@../../../../resources/HUD/contatos.png" /></image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
+                                                <Label text="Contato" textFill="WHITE">
+                                                    <font><Font name="Press Start 2P" size="8.0" /></font>
+                                                    <VBox.margin><Insets top="5.0" /></VBox.margin>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <VBox id="tarefas" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                            <children>
+                                                <Button id="appTarefas" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="botao-app">
+                                                    <graphic>
+                                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image><Image url="@../../../../resources/HUD/tarefas.png" /></image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
+                                                <Label text="Tarefas" textFill="WHITE">
+                                                    <font><Font name="Press Start 2P" size="8.0" /></font>
+                                                    <VBox.margin><Insets top="5.0" /></VBox.margin>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <VBox id="portal" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                            <children>
+                                                <Button id="appPortal" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="botao-app">
+                                                    <graphic>
+                                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image><Image url="@../../../../resources/HUD/portal.png" /></image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
+                                                <Label text="Portal" textFill="WHITE">
+                                                    <font><Font name="Press Start 2P" size="8.0" /></font>
+                                                    <VBox.margin><Insets top="5.0" /></VBox.margin>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <VBox id="armario" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                            <children>
+                                                <Button id="appArmario" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="botao-app">
+                                                    <graphic>
+                                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image><Image url="@../../../../resources/HUD/armario.png" /></image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
+                                                <Label text="Armário" textFill="WHITE">
+                                                    <font><Font name="Press Start 2P" size="8.0" /></font>
+                                                    <VBox.margin><Insets top="5.0" /></VBox.margin>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </FlowPane>
+                                <Button id="fecharCelular" layoutX="84.0" layoutY="275.0" mnemonicParsing="false" onAction="#fecharCelular" prefHeight="30.0" prefWidth="60.0" styleClass="botao-retro" />
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
+
+                <Pane fx:id="overlayPause" prefHeight="720.0" prefWidth="1280.0" styleClass="overlay-popup" visible="false" />
+
+                <VBox fx:id="menuPause" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" pickOnBounds="false" prefHeight="720.0" prefWidth="550.0" spacing="5.0" visible="false" StackPane.alignment="CENTER_LEFT">
+                    <StackPane.margin>
+                        <Insets left="50.0" />
+                    </StackPane.margin>
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="550.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../resources/CompLifeTitulo.png" />
+                            </image>
+                            <VBox.margin>
+                                <Insets bottom="20.0" />
+                            </VBox.margin>
+                        </ImageView>
+
+                        <Button mnemonicParsing="false" onAction="#clicarContinuar" styleClass="botao-retro">
+                            <graphic>
+                                <ImageView fitHeight="120.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                                    <image><Image url="@../../../../resources/botoes/btnContinuar.png" /></image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+
+                        <Button mnemonicParsing="false" onAction="#clicarConfig" styleClass="botao-retro">
+                            <graphic>
+                                <ImageView fitHeight="120.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                                    <image><Image url="@../../../../resources/botoes/btnConfig.png" /></image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+
+                        <Button mnemonicParsing="false" onAction="#clicarSalvar" styleClass="botao-retro">
+                            <graphic>
+                                <ImageView fitHeight="120.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                                    <image><Image url="@../../../../resources/botoes/btnSalvar.png" /></image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+
+                        <Button mnemonicParsing="false" onAction="#clicarSair" styleClass="botao-retro">
+                            <graphic>
+                                <ImageView fitHeight="120.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                                    <image><Image url="@../../../../resources/botoes/btnSair.png" /></image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </VBox>
+
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

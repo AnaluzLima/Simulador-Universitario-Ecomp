@@ -32,26 +32,39 @@ public class MapaRepository {
     }
 
     public void instanciarLocais() { //cria todos os locais
-        locais.put("PontoOnibus", new Local("Ponto de Ônibus"));
 
-        locais.put("PorDoSol", new Local("Praça do Pôr do Sol"));
-        locais.put("Borogodo", new Local("Praça do Borogodó"));
-        locais.put("Quadra", new Local("Quadra"));
-        locais.put("Portao", new Local("Portão Lateral"));
-        locais.put("EntradaBiblioteca", new Local("Entrada da Biblioteca"));
-        locais.put("Biblioteca", new Local("Biblioteca"));
-        locais.put("Bandejao", new Local("Bandejão"));
-        locais.put("Colegiado", new Local("Colegiado"));
-        locais.put("Feirinha", new Local("Feirinha"));
-        locais.put("LEDS", new Local("LEDS"));
+        //ainda sofrerá atualizações
+        locais.put("PontoOnibus", new Local("Ponto de Ônibus", 350.0, 420.0, 200.0, "/resources/Locais/PontoOnibusLocal.png"));
 
-        locais.put("Cantina3", new Local("Cantina do Módulo 3"));
+        locais.put("PorDoSol", new Local("Praça do Pôr do Sol", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Borogodo", new Local("Praça do Borogodó", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Quadra", new Local("Quadra", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Portao", new Local("Portão Lateral", 530.0, 500.0, 220.0, "/resources/Locais/PortaoLateralLocal.png"));
+        locais.put("EntradaBiblioteca", new Local("Entrada da Biblioteca", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Biblioteca", new Local("Biblioteca", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Bandejao", new Local("Bandejão", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Colegiado", new Local("Colegiado", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Feirinha", new Local("Feirinha", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("LEDS", new Local("LEDS", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
 
+        locais.put("Cantina3", new Local("Cantina do Módulo 3", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
 
-        for (int i = 1; i <= 7; i++) {
-            locais.put("Modulo" + i, new Local("Módulo " + i));
-            locais.put("PAT" + i, new Local("Salas de Aula do Módulo " + i));
-        }
+        locais.put("Modulo1", new Local("Módulo 1", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Modulo2", new Local("Módulo 2", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Modulo3", new Local("Módulo 3", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Modulo4", new Local("Módulo 4", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Modulo5", new Local("Módulo 5", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Modulo6", new Local("Módulo 6", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("Modulo7", new Local("Módulo 7", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+
+        locais.put("PAT1", new Local("Salas de Aula do Módulo 1", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("PAT2", new Local("Salas de Aula do Módulo 2", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("PAT3", new Local("Salas de Aula do Módulo 3", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("PAT4", new Local("Salas de Aula do Módulo 4", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("PAT5", new Local("Salas de Aula do Módulo 5", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("PAT6", new Local("Salas de Aula do Módulo 6", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        locais.put("PAT7", new Local("Salas de Aula do Módulo 7", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+
     }
 
     private void configurarSpawn(Mapa mapa, boolean spawnF6) { //define onde o jogador vai 'nascer'

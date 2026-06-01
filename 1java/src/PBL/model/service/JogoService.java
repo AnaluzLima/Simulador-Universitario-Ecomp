@@ -70,11 +70,9 @@ public class JogoService {
             jogo.setFinalizado(true);
         }
         this.salvarJogo(jogo); //salva o progresso independente do resultado
-
     }
 
     //comunicação com o repository:
-
     public void salvarJogo(Jogo jogo) throws JogoException {
         jogoR.salvar(jogo);
     }
@@ -108,9 +106,15 @@ public class JogoService {
         }
 
         //coloca o mapa completo de volta ao Jogo
-        jogoSalvo.setMapa(mapa);
         mapa.distribuirAulas(jogador);
 
         return jogoSalvo;
+    }
+
+    public Jogo carregarRascunho(String slot) throws JogoException {
+        if (!jogoR.existeSave(slot)) {
+            throw new JogoException("Não há nenhum jogo neste slot.");
+        }
+        return jogoR.carregar(slot);
     }
 }

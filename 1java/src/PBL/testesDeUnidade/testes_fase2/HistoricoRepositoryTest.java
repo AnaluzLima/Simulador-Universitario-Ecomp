@@ -22,8 +22,8 @@ public class HistoricoRepositoryTest {
         minigameRepo = new MinigameRepository();
         mapa = new Mapa(true);
         //instancia os locais minimamente para o teste não quebrar
-        mapa.getCampus().add(new PBL.model.model.Local("Salas de Aula do Módulo 5"));
-        mapa.getCampus().add(new PBL.model.model.Local("LEDS"));
+        mapa.getCampus().add(new PBL.model.model.Local("Salas de Aula do Módulo 5", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
+        mapa.getCampus().add(new PBL.model.model.Local("LEDS", 0.0, 0.0, 150.0, "/resources/Locais/.png"));
     }
 
     @Test

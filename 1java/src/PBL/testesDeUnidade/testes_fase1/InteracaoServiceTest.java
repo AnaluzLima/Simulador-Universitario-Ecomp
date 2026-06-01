@@ -23,7 +23,7 @@ public class InteracaoServiceTest {
 
     @BeforeEach
     public void inicializa() {
-        jogador = new Jogador("Luz", new Aparencia("Padrão"));
+        jogador = new Jogador("Luz", new Aparencia("Padrão"), false);
 
         NpcRepository colegaRepo = new NpcRepository();
         interacaoService = new InteracaoService(colegaRepo);

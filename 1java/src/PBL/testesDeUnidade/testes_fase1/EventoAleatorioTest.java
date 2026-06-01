@@ -20,7 +20,7 @@ public class EventoAleatorioTest {
 
     @BeforeEach
     public void inicializa() {
-        jogador = new Jogador("Luz", new Aparencia("Padrão"));
+        jogador = new Jogador("Luz", new Aparencia("Padrão"), false);
         filaGigante = new FilaGigante();
         materialCaro = new MaterialCaro();
         disciplina = new Disciplina("Cálculo", null, 60, 0, null);

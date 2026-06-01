@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PBL.controller.menu.CarregarJogoController">
+    <children>
+        <StackPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../estilo.css">
+            <children>
+                <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../resources/background/CarregarJogoFundo.png" />
+                    </image>
+                </ImageView>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="122.0" prefWidth="140.0" StackPane.alignment="TOP_RIGHT">
+               <children>
+                  <Button id="fechar" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clicarFechar" prefHeight="25.0" prefWidth="25.0" styleClass="botao-retro" />
+               </children>
+            </HBox>
+                <ScrollPane fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="480.0" prefWidth="1000.0" styleClass="scroll-saves" StackPane.alignment="CENTER">
+                    <StackPane.margin>
+                        <Insets top="65.0" />
+                    </StackPane.margin>
+                    <content>
+                        <VBox fx:id="listaSaves" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="480.0" prefWidth="1000.0" spacing="10.0" />
+                    </content>
+                </ScrollPane>
+            <Pane fx:id="overlay" prefHeight="720.0" prefWidth="1280.0" styleClass="overlay-popup" visible="false" />
+            <StackPane fx:id="popupConfirmacao" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="400.0">
+               <children>
+                  <ImageView fitHeight="350.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../resources/PopUpAlerta.png" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="fecharPopUp" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#clicarCancelarDelecao" prefHeight="25.0" prefWidth="25.0" styleClass="botao-retro">
+                           <HBox.margin>
+                              <Insets right="22.0" top="40.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="350.0" StackPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="labelNomeSave" text="tem certeza que deseja excluir o save" textAlignment="CENTER" textFill="#372600" wrapText="true">
+                           <font>
+                              <Font name="Press Start 2P" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="15.0" />
+                           </padding>
+                        </Label>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="70.0" prefWidth="370.0" spacing="10.0">
+                           <children>
+                              <Button id="sim" mnemonicParsing="false" onAction="#clicarConfirmarDelecao" styleClass="botao-retro">
+                                 <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../resources/botoes/btnSim.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button id="nao" mnemonicParsing="false" onAction="#clicarCancelarDelecao" styleClass="botao-retro">
+                                 <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../resources/botoes/btnNao.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <StackPane.margin>
+                        <Insets top="90.0" />
+                     </StackPane.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </StackPane>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

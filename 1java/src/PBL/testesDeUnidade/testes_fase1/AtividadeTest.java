@@ -20,7 +20,7 @@ public class AtividadeTest {
 
     @BeforeEach
     public void inicializa() {
-        jogador = new Jogador("Luz", new Aparencia("padrão"));
+        jogador = new Jogador("Luz", new Aparencia("padrão"), false);
         disciplina = new Disciplina("Cálculo", null, 60, 0, null);
         colega = new Colega("Maeli");
     }

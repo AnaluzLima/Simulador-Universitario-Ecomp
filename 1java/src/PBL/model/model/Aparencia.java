@@ -23,7 +23,6 @@ public class Aparencia {
     private static final List<String> ORDEM_CAMADAS = Arrays.asList(
             "camisa", "oculos", "luva", "folhas", "flor", "blushed"
         // Camada mais baixa                                Camada mais alta
-
     );
 
     public Aparencia(String skinBase) {
@@ -43,26 +42,26 @@ public class Aparencia {
     }
 
     public List<String> getAcessoriosEquipados() {
-        //cópia da lista para ordenar sem quebrar a estrutura
+        //copia da lista
         List<String> listaOrdenada = new ArrayList<>(this.acessoriosEquipados);
 
-        //lambda para ordenar com base no índice da lista oficial de camadas
+        //ordenar com base no indice da lista oficial de camadas
         listaOrdenada.sort((a1, a2) -> Integer.compare(ORDEM_CAMADAS.indexOf(a1), ORDEM_CAMADAS.indexOf(a2)));
 
         return listaOrdenada;
     }
 
     public void toggleAcessorio(String acessorio) throws JogoException {
-        //só pode mexer se já tiver pego o acessório ao longo do jogo
+        //so pode mexer se já tiver pego o acessório ao longo do jogo
         if (!this.acessoriosDesbloqueados.contains(acessorio)) {
             throw new JogoException("Você ainda não desbloqueou este acessório!");
         }
 
-        //se já estiver equipado, o clique remove (desequipa)
+        //se já estiver equipado o clique desequipa
         if (this.acessoriosEquipados.contains(acessorio)) {
             this.acessoriosEquipados.remove(acessorio);
         }
-        //se não estiver equipado, o clique adiciona (equipa)
+        //se não estiver equipado o clique equipa
         else {
             this.acessoriosEquipados.add(acessorio);
         }
@@ -92,4 +91,3 @@ public class Aparencia {
         this.direcaoAtual = direcaoAtual;
     }
 }
-//futuramente adicionar um metodo que pega o arquivo da pasta de sprites

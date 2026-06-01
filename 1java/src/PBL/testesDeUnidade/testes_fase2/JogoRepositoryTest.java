@@ -22,9 +22,9 @@ public class JogoRepositoryTest {
     @BeforeEach
     public void inicializa() throws JogoException {
         jogoRepo = new JogoRepository();
-        Jogador jogador = new Jogador("cobaia", new Aparencia("padrão"));
+        Jogador jogador = new Jogador("cobaia", new Aparencia("padrão"), true);
         Mapa mapa = new Mapa(true);
-        jogoTeste = new Jogo(SLOT_TESTE, jogador, mapa);
+        jogoTeste = new Jogo(SLOT_TESTE, jogador);
     }
 
     @BeforeEach
@@ -79,23 +79,20 @@ public class JogoRepositoryTest {
         assertEquals(85, jogadorCarregado.getSaude().getValor());
         assertTrue(jogadorCarregado.isCansado());
         assertTrue(jogoCarregado.isFinalizado());
-
-        //o gson deve ignorar o mapa (pois ele é transient) e deixá-lo como null
-        assertNull(jogoCarregado.getMapa());
     }
 
     @Test
     public void test_Multiplos_Saves() throws JogoException {
         //cria e salva o jogo 1
-        Jogador jogador1 = new Jogador("Luz", new Aparencia("padrão"));
+        Jogador jogador1 = new Jogador("Luz", new Aparencia("padrão"), false);
         jogador1.setDinheiro(5);
-        Jogo jogo1 = new Jogo("Save_Luz", jogador1, new Mapa(true));
+        Jogo jogo1 = new Jogo("Save_Luz", jogador1);
         jogoRepo.salvar(jogo1);
 
         //cria e salva o jogo 2
-        Jogador jogador2 = new Jogador("Bianca", new Aparencia("padrão"));
+        Jogador jogador2 = new Jogador("Bianca", new Aparencia("padrão"), true);
         jogador2.setDinheiro(9999);
-        Jogo jogo2 = new Jogo("Save_Bianca", jogador2, new Mapa(true));
+        Jogo jogo2 = new Jogo("Save_Bianca", jogador2);
         jogoRepo.salvar(jogo2);
 
         //simula reiniciar o jogo
@@ -170,7 +167,6 @@ public class JogoRepositoryTest {
 
         //lista de validações
         assertNotNull(jogoCarregado);
-        assertNull(jogoCarregado.getMapa()); //O mapa deve ser null pois é transient
 
         assertEquals("cobaia", jogadorCarregado.getNome());
         assertEquals(1500, jogadorCarregado.getDinheiro());
@@ -240,7 +236,6 @@ public class JogoRepositoryTest {
 
         //testes
         assertNotNull(jogoCarregado);
-        assertNull(jogoCarregado.getMapa()); // O mapa deve ser null pois é transient
 
         //validando os status do calouro
         assertEquals("cobaia", jogadorCarregado.getNome());

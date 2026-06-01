@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PBL.controller.menu.ResidenciaController">
+    <children>
+        <StackPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../estilo.css">
+            <children>
+                <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../resources/background/ResidenciaFundo.png" />
+                    </image>
+                </ImageView>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="280.0" prefWidth="650.0" spacing="60.0" StackPane.alignment="CENTER">
+               <StackPane.margin>
+                  <Insets top="70.0" />
+               </StackPane.margin>
+               <children>
+                  <Button id="LadoUniversidade" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#clicarLadoUniversidade" prefHeight="250.0" prefWidth="250.0" styleClass="botao-retro">
+                     <graphic>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/botoes/btnAoLadoUniversidade.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="OutroBairro" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#clicarOutroBairro" prefHeight="250.0" prefWidth="250.0" styleClass="botao-retro">
+                     <graphic>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/botoes/btnOutroBairro.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="122.0" prefWidth="140.0" StackPane.alignment="TOP_RIGHT">
+               <children>
+                  <Button id="fechar" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clicarFechar" prefHeight="25.0" prefWidth="25.0" styleClass="botao-retro" />
+               </children>
+            </HBox>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

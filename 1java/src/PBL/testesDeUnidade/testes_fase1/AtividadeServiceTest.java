@@ -22,7 +22,7 @@ public class AtividadeServiceTest {
 
     @BeforeEach
     public void inicializa() {
-        jogador = new Jogador("Luz", new Aparencia("Padrão"));
+        jogador = new Jogador("Luz", new Aparencia("Padrão"), false);
         disciplina = new Disciplina("Cálculo", null, 60, 0, null);
         atividadeService = new AtividadeService();
 
