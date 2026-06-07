@@ -22,7 +22,7 @@ public class CelularTest {
         celular = new Celular();
 
         colega = new Colega("Scooby");
-        praca = new Local("Praça do Borogodó", 0.0, 0.0, 150.0, "/resources/Locais/.png");
+        praca = new Local("Praça do Borogodó");
     }
 
 

@@ -12,12 +12,12 @@ public class DarRole extends Atividade{
     //ao ir para um rolê, voce escolhe se leva um colega ou não
 
     public DarRole(Colega acompanhante){
-        super("Sair para se divertir", "...");
+        super("Sair para se divertir", "...", "-30 moedas|-10 Pontos de Tempo|+15 de Energia|+10 de Saúde|+40 de Motivação");
         this.acompanhante = acompanhante;
     }
     //Overriding
     public DarRole(){
-        super("Sair para se divertir", "...");
+        super("Sair para se divertir", "...","-30 moedas|-5 Pontos de Tempo|+15 de Energia|+10 de Saúde|+20 de Motivação");
         this.acompanhante = null;
     }
 

@@ -8,5 +8,4 @@ public class ConfiguracoesView {
         sliderSom.setValue(volumeSomAtual);
         sliderMusica.setValue(volumeMusicaAtual);
     }
-
 }

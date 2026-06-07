@@ -21,8 +21,8 @@ public class MapaTest {
     @BeforeEach
     public void inicializa() {
         mapa = new Mapa(true);
-        pats5 = new Local("Salas de Aula do Módulo 5", 0.0, 0.0, 150.0, "/resources/Locais/.png");
-        leds = new Local("LEDS", 0.0, 0.0, 150.0, "/resources/Locais/.png");
+        pats5 = new Local("Salas de Aula do Módulo 5");
+        leds = new Local("LEDS");
 
         mapa.setCampus(new HashSet<>(Arrays.asList(pats5, leds)));
 

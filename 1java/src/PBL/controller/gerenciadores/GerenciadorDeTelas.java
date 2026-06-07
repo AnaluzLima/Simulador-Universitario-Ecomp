@@ -1,6 +1,6 @@
 package PBL.controller.gerenciadores;
 
-import PBL.controller.jogo.InicioSemestreController;
+import PBL.view.TransicaoSemestreView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -76,7 +76,7 @@ public class GerenciadorDeTelas {
         Parent root = loader.load();
 
         //acessa o controller para colocar o número do semestre
-        InicioSemestreController ctrl = loader.getController();
+        TransicaoSemestreView ctrl = loader.getController();
         ctrl.setSemestre(numeroSemestre);
 
         this.cenas.put(GerenciadorDeTelas.INICIO_SEMESTRE, new Scene(root, 1280, 720));

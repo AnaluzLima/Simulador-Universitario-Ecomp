@@ -8,10 +8,12 @@ import PBL.model.model.Jogador;
 public abstract class Atividade {
     private String nome;
     private final String descricao;
+    private String consequencia;
 
-    public Atividade(String nome, String descricao) {
+    public Atividade(String nome, String descricao, String consequencia) {
         this.nome = nome;
         this.descricao = descricao;
+        this.consequencia = consequencia;
     }
 
     public String getNome() {
@@ -22,6 +24,9 @@ public abstract class Atividade {
     }
     public String getDescricao() {
         return this.descricao;
+    }
+    public String getConsequencia() {
+        return this.consequencia;
     }
 
     public abstract void executar(Jogador jogador)throws JogoException;;

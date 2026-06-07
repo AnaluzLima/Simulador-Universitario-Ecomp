@@ -10,7 +10,7 @@ public class CasaEstudar extends Atividade{
     private Disciplina materia;
 
     public CasaEstudar(){
-        super("Ir para Casa e Estudar até tarde", "...");
+        super("Estudar em Casa", "...","-5 Pontos de Tempo|-30 de Energia|+20 de Conhecimento|-10 de Saúde|+30 de Desempenho");
     }
 
     public void setMateria(Disciplina materia){

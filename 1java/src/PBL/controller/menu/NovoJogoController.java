@@ -27,7 +27,7 @@ public class NovoJogoController {
     }
 
     @FXML
-    public void clicarProximo(ActionEvent event) throws JogoException {
+    public void clicarProximo() throws JogoException {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_CLIQUE);
         String nomePartida = campoNomePartida.getText().trim();
         String nomeJogador = campoNomeJogador.getText().trim();
@@ -55,7 +55,7 @@ public class NovoJogoController {
     }
 
     @FXML
-    public void clicarFechar(ActionEvent event) {
+    public void clicarFechar() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_FECHAR);
         GerenciadorDeTelas.getInstance().trocarPara(GerenciadorDeTelas.MENU);
     }

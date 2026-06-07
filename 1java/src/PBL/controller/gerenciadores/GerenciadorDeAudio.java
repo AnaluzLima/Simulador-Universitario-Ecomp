@@ -10,13 +10,13 @@ public class GerenciadorDeAudio {
 
     //musicas
     public static final String MUSICA_MENU = "/resources/audio/MusicaMenu.mp3";
+    public static final String MUSICA_JOGO = "/resources/audio/MusicaJogo.mp3";
 
     //efeitos sonoros
-    public static final String SFX_CLIQUE  = "/resources/audio/btnSelection.mp3";
+    public static final String SFX_CLIQUE  = "/resources/audio/Clicar.mp3";
     public static final String SFX_SAIR = "/resources/audio/Exit.mp3";
     public static final String SFX_FECHAR = "/resources/audio/CloseMenu.mp3";
     public static final String SFX_POPUP = "/resources/audio/PopUpOpen.mp3";
-    public static final String SFX_CONFIRMAR = "/resources/audio/Confirm.mp3";
     public static final String SFX_NEGAR = "/resources/audio/Negar.mp3";
     public static final String SFX_INICIAR = "/resources/audio/Iniciar.mp3";
 
@@ -53,6 +53,18 @@ public class GerenciadorDeAudio {
         }
     }
 
+    public void pausarMusica(){
+        if (musicaAtual != null) {
+            musicaAtual.pause();
+        }
+    }
+
+    public void continuarMusica(){
+        if (musicaAtual != null) {
+            musicaAtual.play();
+        }
+    }
+
     public void setVolumeMusica(double volume) {
         this.volumeMusica = volume;
         if (musicaAtual != null) {
@@ -74,7 +86,6 @@ public class GerenciadorDeAudio {
     public void setVolumeSfx(double volume) {
         this.volumeSfx = volume;
     }
-
     public double getVolumeSfx() {
         return this.volumeSfx;
     }

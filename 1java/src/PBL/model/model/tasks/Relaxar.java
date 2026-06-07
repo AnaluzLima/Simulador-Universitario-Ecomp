@@ -6,7 +6,7 @@ import PBL.model.model.Jogador;
 public class Relaxar extends Atividade{
 
     public Relaxar(){
-        super("Relaxar na Praça", "...");
+        super("Relaxar na Praça", "...","-3 Pontos de Tempo|+5 de Motivação|+3 de Saúde|+8 de Energia");
     }
 
     //o jogador pode relaxar um pouco na praça

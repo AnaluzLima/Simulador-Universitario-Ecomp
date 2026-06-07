@@ -42,13 +42,13 @@ public class JogoServiceTest {
         jogador = new Jogador("Luz", new Aparencia("padrão"), false);
         jogo = new Jogo("Teste", jogador);
 
-        programacao = new Disciplina("Programação", new MinigameSoftware(), 60, 0, null);
+        programacao = new Disciplina("Programação", minigameRepository.buscarMinigamePorArea("Software"), 60, 0, null);
     }
 
     @Test
     public void test_Preparar_E_Jogar_Semana_De_Provas() throws JogoException {
         //cria uma disciplina focada em digitação
-        MinigameTexto provaDigitacao = new MinigameTexto();
+        MinigameTexto provaDigitacao = (MinigameTexto) minigameRepository.buscarMinigamePorArea("Texto");
         Disciplina ptta = new Disciplina("PTTA", provaDigitacao, 60, 0, null);
 
         jogador.getHistorico().adicionarPendente(ptta);

@@ -6,7 +6,7 @@ import PBL.model.model.Jogador;
 public class FalarComMaeli extends Atividade{
 
     public FalarComMaeli() {
-        super("Conversar com Maeli", "...");
+        super("Conversar com Maeli", "...", "-3 Pontos de Tempo|+15 de Motivação|+5 de Conhecimento");
     }
     //Ao falar com a diva da Maeli, você fica mais motivado
 

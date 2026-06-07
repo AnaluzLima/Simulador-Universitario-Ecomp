@@ -13,7 +13,7 @@ public class Bandejar extends Atividade {
     //Indo comer no RU
 
     public Bandejar() {
-        super("Ir ao Bandejão", "...");
+        super("Ir ao Bandejão", "...", "-3 Pontos de Tempo|-2 Moedas|+30 de Energia|+10 de Saúde|+10 de Motivação");
     }
 
     @Override

@@ -40,7 +40,7 @@
                <children>
                   <ImageView fitHeight="350.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../resources/PopUpAlerta.png" />
+                        <Image url="@../../../../resources/PopUpWarning.png" />
                      </image>
                   </ImageView>
                   <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">

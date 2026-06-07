@@ -62,14 +62,14 @@ public class SaveController {
 
     //chamado quando o jogador clica no botão "Carregar" e escolhe um slot.
     public Jogo carregarJogoExistente(String slot) throws JogoException {
-        //Lê o arquivo só para saber o spawn do jogador
+        //le o arquivo só para saber o spawn do jogador
         Jogo rascunho = jogoService.carregarRascunho(slot);
         boolean spawnF6 = rascunho.getJogador().isSpawnF6();
 
         //como os locais e NPCs não são salvos, recria-se o mundo base antes de dar o load
         this.mapa = new Mapa(spawnF6);
         npcRepo.carregarNPCs();
-        mapaRepo.carregarMapa(this.mapa, true, npcRepo);
+        mapaRepo.carregarMapa(this.mapa, spawnF6, npcRepo);
 
         //pega os status do jogador e coloca nesse mundo base
         Jogo jogoCarregado = jogoService.carregarJogo(slot, this.mapa);

@@ -24,7 +24,8 @@ public class SaveControllerTest {
     public void limpaSave() {
         try {
             controller.apagarSave(SLOT);
-        } catch (JogoException e) {
+        }
+        catch (JogoException e) {
             //ignora se o slot já não existir
         }
     }

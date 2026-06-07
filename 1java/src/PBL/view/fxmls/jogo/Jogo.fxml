@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -47,13 +48,13 @@
 
                         <Button id="avancarSemestre" layoutX="985.0" layoutY="600.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="246.0" styleClass="botao-retro">
                             <font><Font name="Press Start 2P" size="18.0" /></font>
-                     <graphic>
-                        <ImageView fitHeight="73.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../resources/botoes/btnSemestre.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                            <graphic>
+                                <ImageView fitHeight="73.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../../resources/botoes/btnSemestre.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
                         </Button>
 
                         <VBox fx:id="painelAtributos" layoutX="179.0" layoutY="383.0" prefHeight="231.0" prefWidth="211.0" visible="false" />
@@ -136,8 +137,97 @@
                     </children>
                 </Pane>
 
-                <Pane fx:id="overlayPause" prefHeight="720.0" prefWidth="1280.0" styleClass="overlay-popup" visible="false" />
+                <Pane fx:id="painelAcoesLateral" visible="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="415.0" prefWidth="311.0" StackPane.alignment="TOP_LEFT" styleClass="scroll-saves">
+                    <StackPane.margin>
+                        <Insets top="15.0" />
+                    </StackPane.margin>
+                    <children>
+                        <ImageView fitHeight="412.0" fitWidth="352.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../resources/HUD/painelLocaisAtividades.png" />
+                            </image>
+                        </ImageView>
+                        <VBox layoutX="20.0" layoutY="25.0" prefHeight="366.0" prefWidth="263.0">
+                            <children>
+                                <Label prefHeight="21.0" prefWidth="292.0" text="Ir para" textAlignment="CENTER" wrapText="true" textFill="#372600">
+                                    <font>
+                                        <Font name="Press Start 2P" size="19.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" top="10.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="131.0" prefWidth="263.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+                                    <content>
+                                        <VBox fx:id="vboxNavegacao" spacing="5.0" />
+                                    </content>
+                                </ScrollPane>
 
+                                <Label prefHeight="21.0" prefWidth="396.0" text="Atividades" textAlignment="CENTER" textFill="#372600">
+                                    <font>
+                                        <Font name="Press Start 2P" size="19.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" top="20.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="131.0" prefWidth="263.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+                                    <content>
+                                        <VBox fx:id="vboxAtividades" spacing="5.0" />
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </Pane>
+
+                <Pane fx:id="overlayPause" prefHeight="720.0" prefWidth="1280.0" styleClass="overlay-popup" visible="false" />
+                <Pane fx:id="overlayPopupAtividade" prefHeight="720.0" prefWidth="1280.0" styleClass="overlay-popup" visible="false" />
+
+                <StackPane fx:id="popupAtividade" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="380.0" prefWidth="488.0" visible="false" StackPane.alignment="CENTER">
+                    <children>
+                        <ImageView fitHeight="378.0" fitWidth="967.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../resources/PopUpVoid.png" />
+                            </image>
+                        </ImageView>
+                        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="267.0" prefWidth="350.0" StackPane.alignment="CENTER">
+                            <children>
+                                <Label fx:id="labelTituloAtividade" text="Titulo da Atividade" textAlignment="CENTER" textFill="#372600" wrapText="true">
+                                    <VBox.margin><Insets top="40.0" /></VBox.margin>
+                                    <font><Font name="Press Start 2P" size="22.0" /></font>
+                                </Label>
+
+                                <Label fx:id="labelDescAtividade" text="Descrição da Atividade" textAlignment="CENTER" textFill="#2b1810" wrapText="true">
+                                    <font><Font name="Press Start 2P" size="18.0" /></font>
+                                    <VBox.margin><Insets top="15.0" /></VBox.margin>
+                                </Label>
+
+                                <Label fx:id="labelConsequencias" text="- Gasta tempo\n- Ganha energia" textAlignment="CENTER" textFill="#8c2a2a" wrapText="true">
+                                    <VBox.margin><Insets top="20.0" /></VBox.margin>
+                                    <font><Font name="Press Start 2P" size="15.0" /></font>
+                                </Label>
+
+                                <Button mnemonicParsing="false" onAction="#clicarConfirmarAtividade" styleClass="botao-retro" wrapText="true">
+                                    <VBox.margin><Insets top="25.0" /></VBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../../resources/botoes/btnConfirmar.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </VBox>
+
+                        <Button id="fechar" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#clicarFecharPopupAtividade" prefHeight="31.0" prefWidth="28.0" styleClass="botao-retro" StackPane.alignment="TOP_RIGHT">
+                            <StackPane.margin>
+                                <Insets right="32.0" top="28.0" />
+                            </StackPane.margin>
+                        </Button>
+                    </children>
+                </StackPane>
                 <VBox fx:id="menuPause" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" pickOnBounds="false" prefHeight="720.0" prefWidth="550.0" spacing="5.0" visible="false" StackPane.alignment="CENTER_LEFT">
                     <StackPane.margin>
                         <Insets left="50.0" />
@@ -185,7 +275,7 @@
                         </Button>
                     </children>
                 </VBox>
-
+                <Pane fx:id="overlayTransicao" mouseTransparent="true" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: black;" visible="false" />
             </children>
         </StackPane>
     </children>

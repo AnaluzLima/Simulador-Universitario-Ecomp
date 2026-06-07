@@ -7,9 +7,12 @@ package PBL.model.model.minigames;
 public class MinigameMatematica extends Minigame {
     private String equacaoAtual;
     private String resposta;
+    private EstrategiaAvaliacao<String, String> estrategia;
 
-    public MinigameMatematica() {
+
+    public MinigameMatematica(EstrategiaAvaliacao<String, String> estrategia) {
         super("Cálculo", "Matemática");
+        this.estrategia = estrategia;
     }
 
     public void setRodada(String equacao, String resposta) {
@@ -21,24 +24,10 @@ public class MinigameMatematica extends Minigame {
         return this.equacaoAtual;
     }
 
-    //Recebe a resposta digitada pelo jogador e quanto tempo ele demorou para enviar.
     public void avaliarResposta(String respostaDigitada, double seg) {
-        //formata a resposta do jogador. Se ele digitou letras maiusculas ou espaços aleatórios, será ignorado, o que torna
-        //a avaliação mais justa
         String respostaFormatada = respostaDigitada != null ? respostaDigitada.trim().toLowerCase().replace(" ", "") : "";
 
-        //se ele errou a resposta completamente, é zero
-        if (!respostaFormatada.equals(this.resposta)) {
-            setPontuacao(0); //errou
-            return;
-        }
-
-        if (seg <= 5) { //se ele respondeu em até 5s tira 10
-            setPontuacao(10);
-        } else if (seg <= 12) { //se respondeu em até 12s tira 8
-            setPontuacao(8);
-        } else { //se não, tira 7
-            setPontuacao(7);
-        }
+        int notaFinal = estrategia.calcularPontuacao(respostaFormatada, this.resposta, seg);
+        setPontuacao(notaFinal);
     }
 }

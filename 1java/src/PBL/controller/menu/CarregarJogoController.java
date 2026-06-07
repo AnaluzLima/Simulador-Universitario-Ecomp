@@ -83,6 +83,7 @@ public class CarregarJogoController {
 
             //transição
             GerenciadorDeTelas.getInstance().trocarParaInicioSemestre(jogoCarregado.getJogador().getSemestre());
+            GerenciadorDeAudio.getInstance().tocarMusica(GerenciadorDeAudio.MUSICA_JOGO);
 
         } catch (JogoException | IOException e) {
             System.err.println("Erro ao carregar: " + e.getMessage());
@@ -98,8 +99,8 @@ public class CarregarJogoController {
     }
 
     @FXML
-    public void clicarConfirmarDelecao(ActionEvent event) {
-        GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_CONFIRMAR);
+    public void clicarConfirmarDelecao() {
+        GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_POPUP);
         try {
             this.persistencia.apagarSave(slotParaDeletar);
             System.out.println("Save '" + slotParaDeletar + "' apagado.");
@@ -115,7 +116,7 @@ public class CarregarJogoController {
     }
 
     @FXML
-    public void clicarCancelarDelecao(ActionEvent event) {
+    public void clicarCancelarDelecao() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_NEGAR);
         this.overlay.setVisible(false);
         this.popupConfirmacao.setVisible(false);
@@ -123,7 +124,7 @@ public class CarregarJogoController {
     }
 
     @FXML
-    public void clicarFechar(ActionEvent event) {
+    public void clicarFechar() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_FECHAR);
         GerenciadorDeTelas.getInstance().trocarPara(GerenciadorDeTelas.MENU);
     }

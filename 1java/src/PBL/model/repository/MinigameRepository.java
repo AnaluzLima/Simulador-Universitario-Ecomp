@@ -12,14 +12,20 @@ import java.util.List;
 public class MinigameRepository {
 
     public Minigame buscarMinigamePorArea(String area) {
-        if (area.equalsIgnoreCase("Texto")) {
-            return new MinigameTexto();
-        } else if (area.equalsIgnoreCase("Matemática")) {
-            return new MinigameMatematica();
-        } else if (area.equalsIgnoreCase("Software")) {
-            return new MinigameSoftware();
-        } else if (area.equalsIgnoreCase("Hardware")) {
-            return new MinigameHardware();
+        if (area.equals("Texto")) {
+            return new MinigameTexto(new AvaliarSimilaridade());
+
+        }
+        else if (area.equals("Matemática")) {
+            return new MinigameMatematica(new AvaliarTempo<String>());
+
+        }
+        else if (area.equals("Software")) {
+            return new MinigameSoftware(new AvaliarTempo<Integer>());
+
+        }
+        else if (area.equals("Hardware")) {
+            return new MinigameHardware(new AvaliarConexao());
         }
         return null;
     }

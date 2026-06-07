@@ -8,7 +8,7 @@ import PBL.model.model.Jogador;
 public class Cantinar extends Atividade{
 
     public Cantinar() {
-        super("Comprar comida na Cantina", "...");
+        super("Comprar Comida", "...","-2 Pontos de Tempo|-12 Moedas|+50 de Energia|+15 de Saúde|+10 de Motivação");
     }
 
     //comprar comida na cantina

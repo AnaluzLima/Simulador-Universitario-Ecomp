@@ -14,7 +14,7 @@ public class AssistirAula extends Atividade {
     private Disciplina materia; //materia da aula que o jogador vai assistir
 
     public AssistirAula() {
-        super("Assistir Aula: ", "...");
+        super("Assistir Aula: ", "...", "-10 Pontos de Tempo|-20 de Energia|+20 de Conhecimento|+30 de Desempenho");
     }
 
     public void setMateria(Disciplina materia) {

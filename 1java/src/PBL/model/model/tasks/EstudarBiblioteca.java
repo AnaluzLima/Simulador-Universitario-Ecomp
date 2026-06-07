@@ -13,12 +13,12 @@ public class EstudarBiblioteca extends Atividade {
     private Disciplina materia;
 
     public EstudarBiblioteca(Colega acompanhante){
-        super("Estudar na Biblioteca","...");
+        super("Estudar na Biblioteca","...", "-10 Pontos de Tempo|-20 de Energia|+15 de Conhecimento|+25 de Desempenho|");
         this.acompanhante = acompanhante;
     }
     //Overloaging
     public EstudarBiblioteca(){
-        super("Estudar na Biblioteca","...");
+        super("Estudar na Biblioteca","...","-5 Pontos de Tempo|-15 de Energia|+10 de Conhecimento|+15 de Desempenho|");
         this.acompanhante = null;
     }
 
@@ -43,14 +43,14 @@ public class EstudarBiblioteca extends Atividade {
         if(acompanhante != null){ //se o jogador ta levando um colega
             jogador.modificarTempo(-10); //gasta 10 pontos de tempo
             jogador.getEnergia().modificar(-20); //gasta 20 de energia
-            jogador.getConhecimento().modificar(20); //ganha 20 de conhecimento
+            jogador.getConhecimento().modificar(15); //ganha 20 de conhecimento
             this.materia.modificarDesempenho(25); //ganha 25 de desempenho na materia
             jogador.getCelular().modificarAmizade(acompanhante.getNome(), 2); //aumenta a relação entre eles
         }
         else{ //se não
             jogador.modificarTempo(-5); //gasta 5 pontos de tempo
             jogador.getEnergia().modificar(-15); //gasta 15 de energia
-            jogador.getConhecimento().modificar(10); //ganha 10 de motivação
+            jogador.getConhecimento().modificar(10);
             this.materia.modificarDesempenho(15); //ganha 15 de desempenho na materia
         }
         milagre.tentarAtivar(jogador); //tenta ativar o milagre academico

@@ -24,7 +24,7 @@ public class MinigameTest {
     //testando regras gerais
     @Test
     public void test_Calcular_Dificuldade() {
-        MinigameTexto minigame = new MinigameTexto();
+        Minigame minigame = repo.buscarMinigamePorArea("Texto");
 
         //desempenho <= 50 -> Difícil
         assertEquals("Difícil", minigame.calcularDificuldade(30));
@@ -42,7 +42,7 @@ public class MinigameTest {
     //testando o minigame de texto
     @Test
     public void test_MinigameTexto_Digitacao_Nula_Ou_Vazia() {
-        MinigameTexto texto = new MinigameTexto();
+        MinigameTexto texto = (MinigameTexto) repo.buscarMinigamePorArea("Texto");
         texto.setTextoAtual("UEFS");
 
         texto.avaliarDigitacao(null);
@@ -53,7 +53,7 @@ public class MinigameTest {
     }
     @Test
     public void test_MinigameTexto_Acerto_Parcial() {
-        MinigameTexto texto = new MinigameTexto();
+        MinigameTexto texto = (MinigameTexto) repo.buscarMinigamePorArea("Texto");
         //palavra de 10 letras
         texto.setTextoAtual("engenharia");
 
@@ -65,7 +65,7 @@ public class MinigameTest {
     }
     @Test
     public void test_MinigameTexto_Acerto_Total() {
-        MinigameTexto texto = new MinigameTexto();
+        MinigameTexto texto = (MinigameTexto) repo.buscarMinigamePorArea("Texto");
         texto.setTextoAtual("algoritmos");
 
         texto.avaliarDigitacao("algoritmos");
@@ -75,7 +75,7 @@ public class MinigameTest {
     //testando o minigame de matemática
     @Test
     public void test_MinigameMatematica_Formatacao_Resposta() {
-        MinigameMatematica matematica = new MinigameMatematica();
+        MinigameMatematica matematica = (MinigameMatematica) repo.buscarMinigamePorArea("Matemática");
         matematica.setRodada("15 + 27", "42");
 
         //resposta certa mas cheia de espaços e letras maiúsculas misturadas
@@ -84,7 +84,7 @@ public class MinigameTest {
     }
     @Test
     public void test_MinigameMatematica_Limites_De_Tempo() {
-        MinigameMatematica matematica = new MinigameMatematica();
+        MinigameMatematica matematica = (MinigameMatematica) repo.buscarMinigamePorArea("Matemática");
         matematica.setRodada("10 + 10", "20");
 
         //rápido
@@ -107,7 +107,7 @@ public class MinigameTest {
     //testando o minigame de software
     @Test
     public void test_MinigameSoftware_Avaliacao() {
-        MinigameSoftware software = new MinigameSoftware();
+        MinigameSoftware software = (MinigameSoftware) repo.buscarMinigamePorArea("Software");
         software.setRodada("Pergunta", Arrays.asList("A", "B", "C"), 1); //correta é a B
 
         //errou o índice
@@ -130,7 +130,7 @@ public class MinigameTest {
     //testando o minigame de hardware
     @Test
     public void test_MinigameHardware_Conexao_Correta_E_Invertida() {
-        MinigameHardware hardware = new MinigameHardware();
+        MinigameHardware hardware = (MinigameHardware) repo.buscarMinigamePorArea("Hardware");
         hardware.setRodada("Ligue o circuito", "Pino 5V", "Resistor");
 
         //ligou na ordem exata ditada pelo gabarito
@@ -144,7 +144,7 @@ public class MinigameTest {
 
     @Test
     public void test_MinigameHardware_Conexao_Incorreta_Ou_Nula() {
-        MinigameHardware hardware = new MinigameHardware();
+        MinigameHardware hardware = (MinigameHardware) repo.buscarMinigamePorArea("Hardware");
         hardware.setRodada("Ligue o circuito", "Pino 5V", "Resistor");
 
         //ligou fios completamente diferentes
@@ -171,7 +171,7 @@ public class MinigameTest {
     }
     @Test
     public void test_Service_Prepara_Rodada_Texto() {
-        MinigameTexto minigame = new MinigameTexto();
+        MinigameTexto minigame = (MinigameTexto) repo.buscarMinigamePorArea("Texto");
 
         //simula jogador com desempenho alto
         service.prepararMinigameTexto(minigame, 90);
@@ -184,7 +184,7 @@ public class MinigameTest {
 
     @Test
     public void test_Service_Prepara_Rodada_Software() {
-        MinigameSoftware minigame = new MinigameSoftware();
+        MinigameSoftware minigame = (MinigameSoftware) repo.buscarMinigamePorArea("Software");
 
         service.prepararMinigameSoftware(minigame, 60); //dificuldade média
 
@@ -196,7 +196,7 @@ public class MinigameTest {
 
     @Test
     public void test_Service_Prepara_Rodada_Hardware() {
-        MinigameHardware minigame = new MinigameHardware();
+        MinigameHardware minigame = (MinigameHardware) repo.buscarMinigamePorArea("Hardware");
         service.prepararMinigameHardware(minigame, 5); //difícil
 
         assertNotNull(minigame.getInstrucao());

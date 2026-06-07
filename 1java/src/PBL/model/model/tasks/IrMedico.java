@@ -6,7 +6,7 @@ import PBL.model.model.Jogador;
 public class IrMedico extends Atividade{
 
     public IrMedico() {
-        super("Ir ao Médico", "...");
+        super("Ir ao Médico", "...", "-5 Pontos de Tempo|+40 de Saúde");
     }
 
     //Ao ir pro médico por conta própia, o jogador gasta 5 pontos de tempo e recupera 40 de saúde

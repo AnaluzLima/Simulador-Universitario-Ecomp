@@ -31,7 +31,7 @@ public class ConfiguracoesController {
     }
 
     @FXML
-    public void clicarFechar(ActionEvent event) {
+    public void clicarFechar() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_FECHAR);
 
         //pega a variável de controle

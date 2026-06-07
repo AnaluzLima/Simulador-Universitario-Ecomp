@@ -5,7 +5,7 @@ import PBL.model.model.Jogador;
 
 public class CasaDormir extends Atividade{
     public CasaDormir(){
-        super("Ir para Casa e descansar", "...");
+        super("Descansar em casa", "...","-4 Pontos de Tempo|+10 de Energia");
     }
 
     //Ir para casa dormir

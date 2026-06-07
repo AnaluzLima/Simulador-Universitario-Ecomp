@@ -25,19 +25,19 @@ public class ResidenciaController {
     }
 
     @FXML
-    public void clicarLadoUniversidade(ActionEvent event) {
+    public void clicarLadoUniversidade() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_INICIAR);
         iniciarJogo(true);
     }
 
     @FXML
-    public void clicarOutroBairro(ActionEvent event) {
+    public void clicarOutroBairro() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_INICIAR);
         iniciarJogo(false);
     }
 
     @FXML
-    public void clicarFechar(ActionEvent event) {
+    public void clicarFechar() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_FECHAR);
         GerenciadorDeTelas.getInstance().trocarPara(GerenciadorDeTelas.NOVO_JOGO);
     }
@@ -68,7 +68,7 @@ public class ResidenciaController {
 
             //inicia a transição
             GerenciadorDeTelas.getInstance().trocarParaInicioSemestre(jogoIniciado.getJogador().getSemestre());
-
+            GerenciadorDeAudio.getInstance().tocarMusica(GerenciadorDeAudio.MUSICA_JOGO);
         }
         catch (JogoException | IOException e) {
             System.err.println("Erro ao iniciar jogo: " + e.getMessage());

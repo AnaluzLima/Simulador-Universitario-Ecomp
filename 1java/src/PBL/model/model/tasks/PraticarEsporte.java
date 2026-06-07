@@ -6,7 +6,7 @@ import PBL.model.model.Jogador;
 public class PraticarEsporte extends Atividade{
 
     public PraticarEsporte() {
-        super("Praticar Atividade Física", "...");
+        super("Praticar Atividade Física", "...", "-8 Pontos de Tempo|-30 de Energia|+15 de Saúde|+30 de Motivação");
     }
 
     //o jogador pode praticar esportes na quadra

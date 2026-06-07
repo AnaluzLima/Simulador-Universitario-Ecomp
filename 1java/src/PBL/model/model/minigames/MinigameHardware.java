@@ -8,9 +8,11 @@ public class MinigameHardware extends Minigame {
     private String instrucao;
     private String pinoOrigemGabarito;
     private String pinoDestinoGabarito;
+    private EstrategiaAvaliacao<String[], String[]> estrategia;
 
-    public MinigameHardware() {
+    public MinigameHardware(EstrategiaAvaliacao<String[], String[]> estrategia) {
         super("Conexão de Circuitos", "Hardware");
+        this.estrategia = estrategia;
     }
 
     public void setRodada(String instrucao, String origem, String destino) {
@@ -31,24 +33,11 @@ public class MinigameHardware extends Minigame {
         return pinoDestinoGabarito;
     }
 
-    //recebe as duas pontas do fio que o jogador conectou na tela
     public void avaliarConexao(String origemJogador, String destinoJogador, double tempo) {
+        String[] repostaJogador = {origemJogador, destinoJogador};
+        String[] gabarito = {this.pinoOrigemGabarito, this.pinoDestinoGabarito};
 
-        if (origemJogador == null || destinoJogador == null) {
-            setPontuacao(0); // Não conectou nada
-            return;
-        }
-
-        //verifica se ligou na ordem exata do gabarito
-        boolean ligacaoDireta = origemJogador.equals(this.pinoOrigemGabarito) && destinoJogador.equals(this.pinoDestinoGabarito);
-
-        //verifica se ligou de trás pra frente
-        boolean ligacaoInvertida = origemJogador.equals(this.pinoDestinoGabarito) && destinoJogador.equals(this.pinoOrigemGabarito);
-
-        if (ligacaoDireta || ligacaoInvertida) {
-            setPontuacao(10);
-        } else {
-            setPontuacao(0);  // Errou o fio
-        }
+        int notaFinal = estrategia.calcularPontuacao(repostaJogador, gabarito, tempo);
+        setPontuacao(notaFinal);
     }
 }

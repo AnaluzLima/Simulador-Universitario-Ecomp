@@ -10,7 +10,7 @@ public class ComprarFeirinha extends Atividade{
     private int preco;
 
     public ComprarFeirinha(String item, int preco) {
-        super("Comprar " + item, "...");
+        super("Comprar " + item, "...","...");
         this.item = item;
         this.preco = preco;
     }

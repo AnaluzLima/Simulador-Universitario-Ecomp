@@ -23,7 +23,7 @@ public class MenuController {
     }
 
     @FXML
-    public void clicarNovoJogo(ActionEvent event) {
+    public void clicarNovoJogo() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_CLIQUE);
         try {
             GerenciadorDeTelas g = GerenciadorDeTelas.getInstance();
@@ -35,7 +35,7 @@ public class MenuController {
     }
 
     @FXML
-    public void clicarCarregar(ActionEvent event) {
+    public void clicarCarregar() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_CLIQUE);
         try {
             GerenciadorDeTelas g = GerenciadorDeTelas.getInstance();
@@ -47,7 +47,7 @@ public class MenuController {
     }
 
     @FXML
-    public void clicarConfig(ActionEvent event) {
+    public void clicarConfig() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_CLIQUE);
         try {
             GerenciadorDeTelas g = GerenciadorDeTelas.getInstance();
@@ -59,7 +59,7 @@ public class MenuController {
     }
 
     @FXML
-    public void clicarSair(ActionEvent event) {
+    public void clicarSair() {
         GerenciadorDeAudio.getInstance().tocarSfx(GerenciadorDeAudio.SFX_SAIR);
         Platform.exit(); //encerra o jogo de forma limpa
     }
